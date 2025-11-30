@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tronix365 | Advanced Robotics & IoT Internship Program</title>
+    <!-- Load Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Configure Tailwind for custom colors and font -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'tronix-dark': '#0a0a0a',
+                        'tronix-primary': '#00f7ff', /* Cyan/Electric Blue for high-tech glow */
+                        'tronix-secondary': '#8338ec', /* Violet/Purple for accent */
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    keyframes: {
+                        glow: {
+                            '0%, 100%': { 'text-shadow': '0 0 5px #00f7ff, 0 0 10px #00f7ff, 0 0 20px #00f7ff' },
+                            '50%': { 'text-shadow': '0 0 10px #00f7ff, 0 0 25px #00f7ff, 0 0 40px #00f7ff' },
+                        },
+                        pulseFade: {
+                             '0%, 100%': { opacity: '0.8', transform: 'scale(1)' },
+                             '50%': { opacity: '1', transform: 'scale(1.03)' },
+                        },
+                    },
+                    animation: {
+                        glow: 'glow 2s ease-in-out infinite',
+                        pulseFade: 'pulseFade 3s ease-in-out infinite',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Custom scrollbar for better aesthetic */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #1a1a1a; }
+        ::-webkit-scrollbar-thumb { background: #00f7ff; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #00e0e0; }
+        
+        /* Smooth scrolling for internal links */
+        html { scroll-behavior: smooth; }
+
+        /* Background grid/pattern for high-tech feel */
+        .tech-bg {
+            background-color: #0a0a0a;
+            background-image: 
+                linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+            background-size: 50px 50px;
+        }
+
+        /* Hero text glow */
+        #hero-title {
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+
+        /* Custom card styling for the syllabus items */
+        .syllabus-card {
+            transition: all 0.3s ease;
+            box-shadow: 0 0 15px rgba(0, 247, 255, 0.2);
+            border: 1px solid rgba(0, 247, 255, 0.3);
+        }
+        .syllabus-card:hover {
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 0 25px rgba(0, 247, 255, 0.4), 0 0 40px rgba(131, 56, 236, 0.3);
+        }
+    </style>
+</head>
+
+<body class="bg-tronix-dark text-gray-100 font-sans tech-bg">
+
+    <!-- Navbar -->
+    <header class="sticky top-0 z-50 bg-tronix-dark/90 backdrop-blur-sm shadow-lg shadow-tronix-primary/10">
+        <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
+            <a href="#" class="text-3xl font-bold text-tronix-primary animate-pulseFade">Tronix365<span class="text-tronix-secondary">.</span></a>
+            <div class="hidden md:flex space-x-8 text-lg">
+                <a href="#internship" class="hover:text-tronix-primary transition duration-300">Internship</a>
+                <a href="#syllabus" class="hover:text-tronix-primary transition duration-300">Syllabus</a>
+                <a href="#about" class="hover:text-tronix-primary transition duration-300">About Us</a>
+                <a href="#pricing" class="hover:text-tronix-primary transition duration-300">Pricing</a>
+                <a href="#contact" class="hover:text-tronix-primary transition duration-300">Enroll</a>
+            </div>
+            <button id="menu-button" class="md:hidden text-tronix-primary focus:outline-none">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+            </button>
+        </nav>
+        <!-- Mobile Menu (Hidden by default) -->
+        <div id="mobile-menu" class="hidden md:hidden bg-tronix-dark p-4 border-t border-tronix-primary/20">
+            <a href="#internship" class="block py-2 text-center hover:text-tronix-primary transition duration-300">Internship</a>
+            <a href="#syllabus" class="block py-2 text-center hover:text-tronix-primary transition duration-300">Syllabus</a>
+            <a href="#about" class="block py-2 text-center hover:text-tronix-primary transition duration-300">About Us</a>
+            <a href="#pricing" class="block py-2 text-center hover:text-tronix-primary transition duration-300">Pricing</a>
+            <a href="#contact" class="block py-2 text-center hover:text-tronix-primary transition duration-300">Enroll</a>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section id="home" class="relative min-h-screen flex items-center justify-center pt-20 pb-12 overflow-hidden">
+            <div class="text-center max-w-4xl px-4 z-10">
+                <h1 id="hero-title" class="text-6xl sm:text-7xl lg:text-8xl font-extrabold mb-4 uppercase tracking-tighter leading-none text-white">
+                    40-Day Embedded & IoT Internship
+                </h1>
+                <p class="text-xl sm:text-2xl text-gray-300 mb-8 font-light">
+                    Transforming Students into Industry-Ready Engineers. <span class="text-tronix-primary font-medium">100% Hands-on.</span>
+                </p>
+                
+                <!-- Countdown Timer -->
+                <div class="bg-tronix-dark/70 p-6 rounded-xl shadow-2xl shadow-tronix-primary/20 border border-tronix-primary/30 mb-10 mx-auto max-w-lg">
+                    <p class="text-xl font-semibold mb-2 text-tronix-secondary">Program Starts In:</p>
+                    <div id="countdown" class="flex justify-center space-x-4">
+                        <div class="flex flex-col items-center">
+                            <span id="days" class="text-4xl lg:text-5xl font-mono font-bold text-tronix-primary">00</span>
+                            <span class="text-sm uppercase text-gray-400">Days</span>
+                        </div>
+                        <div class="text-4xl lg:text-5xl text-gray-600">:</div>
+                        <div class="flex flex-col items-center">
+                            <span id="hours" class="text-4xl lg:text-5xl font-mono font-bold text-tronix-primary">00</span>
+                            <span class="text-sm uppercase text-gray-400">Hours</span>
+                        </div>
+                        <div class="text-4xl lg:text-5xl text-gray-600">:</div>
+                        <div class="flex flex-col items-center">
+                            <span id="minutes" class="text-4xl lg:text-5xl font-mono font-bold text-tronix-primary">00</span>
+                            <span class="text-sm uppercase text-gray-400">Minutes</span>
+                        </div>
+                        <div class="text-4xl lg:text-5xl text-gray-600">:</div>
+                        <div class="flex flex-col items-center">
+                            <span id="seconds" class="text-4xl lg:text-5xl font-mono font-bold text-tronix-primary">00</span>
+                            <span class="text-sm uppercase text-gray-400">Seconds</span>
+                        </div>
+                    </div>
+                    <p class="text-lg mt-3 font-medium text-gray-300">Starting Date: Dec 22nd</p>
+                </div>
+                
+                <a href="#pricing" class="inline-block py-4 px-12 bg-tronix-primary text-tronix-dark font-extrabold text-xl rounded-full uppercase tracking-wider transition-all duration-300 shadow-xl hover:shadow-tronix-primary/50 hover:bg-white hover:text-tronix-secondary">
+                    Secure Your Seat Now
+                </a>
+            </div>
+            
+            <!-- Background element for visual flair -->
+            <div class="absolute inset-0 opacity-10 z-0 pointer-events-none">
+                <div class="w-full h-full bg-cover bg-center" style="background-image: radial-gradient(circle at 50% 50%, #00f7ff10, transparent 70%);"></div>
+            </div>
+        </section>
+
+        <!-- About Tronix365 Section -->
+        <section id="about" class="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 border-t border-tronix-primary/20">
+            <h2 class="text-5xl font-bold text-center mb-16 text-white tracking-tight">
+                About <span class="text-tronix-primary">Tronix365</span>
+            </h2>
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div>
+                    <p class="text-gray-300 text-lg mb-6 leading-relaxed">
+                        Tronix365 specializes in advanced industrial solutions, focusing on Robotics, Embedded Systems, and IoT. Our expertise spans the entire development cycle, from PCB design and development to full-scale R&D. We also provide comprehensive electronic guidance and services, alongside essential development support and training for engineering students.
+                    </p>
+                    <p class="text-gray-300 text-lg leading-relaxed border-l-4 border-tronix-secondary pl-4 py-2">
+                        Our vision is to empower the future of industry by delivering pioneering Robotics, Embedded, and IoT solutions, while simultaneously fostering a culture of practical innovation through comprehensive R&D and dedicated guidance for emerging engineering talent.
+                    </p>
+                </div>
+                <div class="p-6 bg-tronix-dark/50 rounded-xl shadow-2xl shadow-tronix-secondary/20">
+                    <h3 class="text-3xl font-bold text-tronix-primary mb-4">Our Commitment: Skill Mastery</h3>
+                    <ul class="space-y-3 text-gray-400 text-base">
+                        <li class="flex items-center"><span class="text-tronix-secondary mr-3">&#x27A4;</span> Sensor & Actuator Expertise</li>
+                        <li class="flex items-center"><span class="text-tronix-secondary mr-3">&#x27A4;</span> Real-World Industrial Projects</li>
+                        <li class="flex items-center"><span class="text-tronix-secondary mr-3">&#x27A4;</span> Comprehensive Engineering Solutions</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Internship Highlights / Why Choose Us -->
+        <section id="internship" class="py-20 bg-[#111] max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 rounded-xl my-16 shadow-inner shadow-tronix-primary/10">
+            <h2 class="text-5xl font-bold text-center mb-16 text-white tracking-tight">
+                Program <span class="text-tronix-secondary">Highlights</span>
+            </h2>
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Highlight Card 1: Hands-on -->
+                <div class="p-6 rounded-xl bg-tronix-dark border border-tronix-secondary/30 text-center syllabus-card">
+                    <div class="text-5xl text-tronix-primary mb-4">🔬</div>
+                    <h3 class="text-xl font-bold mb-2">100% Hands-On</h3>
+                    <p class="text-gray-400 text-sm">Everything is covered practically, from basic soldering to creating the final product. Learn by doing.</p>
+                </div>
+                <!-- Highlight Card 2: PCB Design -->
+                <div class="p-6 rounded-xl bg-tronix-dark border border-tronix-secondary/30 text-center syllabus-card">
+                    <div class="text-5xl text-tronix-primary mb-4">🛠️</div>
+                    <h3 class="text-xl font-bold mb-2">End-to-End PCB Design</h3>
+                    <p class="text-gray-400 text-sm">Master PCB designing in Proteus, followed by heat press, etching, tinning, component mounting, and masking.</p>
+                </div>
+                <!-- Highlight Card 3: College Projects -->
+                <div class="p-6 rounded-xl bg-tronix-dark border border-tronix-secondary/30 text-center syllabus-card">
+                    <div class="text-5xl text-tronix-primary mb-4">🎓</div>
+                    <h3 class="text-xl font-bold mb-2">Dedicated Project Support</h3>
+                    <p class="text-gray-400 text-sm">Total support in making and perfecting your final year or semester college project.</p>
+                </div>
+                <!-- Highlight Card 4: Placement -->
+                <div class="p-6 rounded-xl bg-tronix-dark border border-tronix-secondary/30 text-center syllabus-card">
+                    <div class="text-5xl text-tronix-primary mb-4">🤝</div>
+                    <h3 class="text-xl font-bold mb-2">Placement Guidance</h3>
+                    <p class="text-gray-400 text-sm">Receive valuable support and guidance to kickstart your career in the engineering industry.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Syllabus Section -->
+        <section id="syllabus" class="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 border-t border-tronix-secondary/20">
+            <h2 class="text-5xl font-bold text-center mb-16 text-white tracking-tight">
+                40-Day Internship <span class="text-tronix-primary">Syllabus</span>
+            </h2>
+            
+            <div class="grid lg:grid-cols-3 gap-8">
+                
+                <!-- Column 1: Microcontrollers & Core -->
+                <div class="bg-tronix-dark/50 p-6 rounded-xl border border-tronix-secondary/30">
+                    <h3 class="text-2xl font-bold mb-4 pb-2 border-b border-tronix-secondary/50 text-tronix-secondary">Core Embedded Systems</h3>
+                    <ul class="space-y-2 text-gray-300">
+                        <li class="flex items-start"><span class="text-tronix-primary mr-3 text-xl">&raquo;</span> Microcontrollers:Arduino (IDE & Programming), ESP32, 8051, Raspberry Pi</li>
+                        <li class="flex items-start"><span class="text-tronix-primary mr-3 text-xl">&raquo;</span> Protocols: SPI, UART (Serial Comm), I2C</li>
+                        <li class="flex items-start"><span class="text-tronix-primary mr-3 text-xl">&raquo;</span> Networking Protocols: HTTP & HTTPS</li>
+                        <li class="flex items-start"><span class="text-tronix-primary mr-3 text-xl">&raquo;</span> Real-World Implementation:Hands-on from soldering to final product assembly.</li>
+                    </ul>
+                </div>
+
+                <!-- Column 2: Sensors & Actuators -->
+                <div class="bg-tronix-dark/50 p-6 rounded-xl border border-tronix-secondary/30">
+                    <h3 class="text-2xl font-bold mb-4 pb-2 border-b border-tronix-secondary/50 text-tronix-secondary">Sensors, Actuators & IoT</h3>
+                    <ul class="space-y-2 text-gray-300">
+                        <li class="flex items-start"><span class="text-tronix-primary mr-3 text-xl">&raquo;</span> Key Sensors: IR, Ultrasonic, PIR, ECG, Touch, LDR, PZEM (Energy Monitoring)</li>
+                        <li class="flex items-start"><span class="text-tronix-primary mr-3 text-xl">&raquo;</span> Motors:Servo, DC Motors, Stepper Motors (MG995)</li>
+                        <li class="flex items-start"><span class="text-tronix-primary mr-3 text-xl">&raquo;</span> Advanced IoT:Connecting devices to the cloud and web platforms.</li>
+                        <li class="flex items-start"><span class="text-tronix-primary mr-3 text-xl">&raquo;</span> Web Integration: Displaying sensor data onto a live website.</li>
+                    </ul>
+                </div>
+
+                <!-- Column 3: Industrial & PCB -->
+                <div class="bg-tronix-dark/50 p-6 rounded-xl border border-tronix-secondary/30">
+                    <h3 class="text-2xl font-bold mb-4 pb-2 border-b border-tronix-secondary/50 text-tronix-secondary">PCB Design & Robotics</h3>
+                    <ul class="space-y-2 text-gray-300">
+                        <li class="flex items-start"><span class="text-tronix-primary mr-3 text-xl">&raquo;</span> PCB Design (Proteus): Schematic to Layout design.</li>
+                        <li class="flex items-start"><span class="text-tronix-primary mr-3 text-xl">&raquo;</span> PCB Fabrication:Heat Press, Etching, Tinning, Component Mounting, Masking.</li>
+                        <li class="flex items-start"><span class="text-tronix-primary mr-3 text-xl">&raquo;</span> Robotics: Concepts and hands-on application of robotic systems.</li>
+                        <li class="flex items-start"><span class="text-tronix-primary mr-3 text-xl">&raquo;</span> Innovation: Developing new sensors during the internship.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <p class="text-center mt-12 text-lg font-medium text-gray-400">This intensive program is designed to cover all topics in a hands-on, course-like structure over 40 days.</p>
+        </section>
+
+        <!-- Pricing Section -->
+        <section id="pricing" class="py-20 bg-[#151515] max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 rounded-xl my-16 shadow-2xl shadow-tronix-secondary/20 border border-tronix-secondary/20">
+            <h2 class="text-5xl font-bold text-center mb-16 text-white tracking-tight">
+                Investment & <span class="text-tronix-primary">Enrollment</span>
+            </h2>
+            
+            <div class="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+                
+                <!-- Plan 1: Actual Price (Strikethrough) -->
+                <div class="p-8 rounded-xl bg-tronix-dark border-2 border-red-500/50 text-center transition-all duration-500">
+                    <p class="text-lg uppercase font-semibold text-red-500 mb-2">Actual Program Value</p>
+                    <p class="text-4xl font-extrabold text-red-500 line-through mb-4">₹16,800</p>
+                    <p class="text-sm text-gray-500">Full Course Price</p>
+                </div>
+
+                <!-- Plan 2: Discounted Price (Recommended) -->
+                <div class="p-8 rounded-xl bg-tronix-dark border-4 border-tronix-primary text-center shadow-lg shadow-tronix-primary/40 transition-all duration-500 scale-105">
+                    <p class="text-lg uppercase font-semibold text-tronix-primary mb-2 animate-pulse">Special Discount</p>
+                    <p class="text-5xl font-extrabold text-white mb-4">₹10,000</p>
+                    <p class="text-sm text-gray-300">40-Day Full Program Access</p>
+                    <p class="text-xs mt-4 text-tronix-primary font-bold">(Save ₹6,800 Instantly)</p>
+                </div>
+
+                <!-- Plan 3: Early Bird Offer (The Hook) -->
+                <div class="relative p-8 rounded-xl bg-tronix-secondary/20 border-4 border-tronix-secondary text-center shadow-lg shadow-tronix-secondary/50 transition-all duration-500">
+                    <div class="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-red-600 text-white text-xs font-bold px-3 py-1 rounded-full uppercase">
+                        Limited 10 Seats!
+                    </div>
+                    <p class="text-lg uppercase font-semibold text-tronix-secondary mb-2">Super Early Bird</p>
+                    <p class="text-5xl font-extrabold text-tronix-secondary mb-4">₹6,000</p>
+                    <p class="text-sm text-gray-300">For the First 10 Enrollments Only</p>
+                    <p class="text-xs mt-4 text-red-400 font-bold">FEES PAYABLE ONE TIME ONLY</p>
+                </div>
+            </div>
+
+            <div class="text-center mt-12">
+                <a href="#contact" class="inline-block py-4 px-12 bg-tronix-secondary text-white font-extrabold text-xl rounded-full uppercase tracking-wider transition-all duration-300 shadow-xl hover:shadow-tronix-secondary/50 hover:bg-[#a352ff]">
+                    Enroll Now & Pay ₹10,000
+                </a>
+                <p class="text-sm mt-4 text-gray-400">Contact us immediately to secure the ₹6,000 early bird slot!</p>
+            </div>
+        </section>
+        
+        <!-- Terms and Conditions Section (Brief) -->
+        <section id="terms" class="py-12 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+             <h2 class="text-3xl font-bold text-center mb-8 text-white tracking-tight">
+                Terms & <span class="text-tronix-primary">Conditions</span>
+            </h2>
+            <div class="bg-tronix-dark/50 p-6 rounded-xl border border-gray-700">
+                <ul class="text-gray-400 space-y-3 text-sm list-disc list-inside">
+                    <li>Fee Payment: All program charges (₹10,000 or ₹6,000 Early Bird) are payable one time in full upon enrollment confirmation.</li>
+                    <li>Duration: The internship is a fixed 40-day, course-based program starting on December 22nd.</li>
+                    <li>Eligibility:Open to students interested in Robotics, Embedded Systems, and IoT.</li>
+                    <li>Support:College Project Support and Placement Guidance are advisory and supportive in nature, focusing on skill development and resume building.</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Contact/Enrollment Form -->
+        <section id="contact" class="py-20 max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 border-t border-tronix-primary/20 mt-16">
+            <h2 class="text-5xl font-bold text-center mb-12 text-white tracking-tight">
+                Ready to <span class="text-tronix-secondary">Join?</span>
+            </h2>
+            <form class="space-y-6 bg-[#111] p-8 rounded-xl shadow-2xl shadow-tronix-primary/20 border border-tronix-primary/30">
+                <div>
+                    <label for="name" class="block text-sm font-medium text-gray-300">Full Name</label>
+                    <input type="text" id="name" name="name" placeholder="Your Name" required class="mt-1 block w-full px-4 py-3 bg-tronix-dark border border-gray-600 rounded-lg text-white focus:ring-tronix-primary focus:border-tronix-primary transition duration-200">
+                </div>
+                <div>
+                    <label for="email" class="block text-sm font-medium text-gray-300">Email Address</label>
+                    <input type="email" id="email" name="email" placeholder="you@college.com" required class="mt-1 block w-full px-4 py-3 bg-tronix-dark border border-gray-600 rounded-lg text-white focus:ring-tronix-primary focus:border-tronix-primary transition duration-200">
+                </div>
+                <div>
+                    <label for="phone" class="block text-sm font-medium text-gray-300">Phone Number</label>
+                    <input type="tel" id="phone" name="phone" placeholder="+91 98765 43210" required class="mt-1 block w-full px-4 py-3 bg-tronix-dark border border-gray-600 rounded-lg text-white focus:ring-tronix-primary focus:border-tronix-primary transition duration-200">
+                </div>
+                <div>
+                    <label for="message" class="block text-sm font-medium text-gray-300">Your College / Query (Optional)</label>
+                    <textarea id="message" name="message" rows="3" placeholder="Tell us about your background or any questions you have." class="mt-1 block w-full px-4 py-3 bg-tronix-dark border border-gray-600 rounded-lg text-white focus:ring-tronix-primary focus:border-tronix-primary transition duration-200"></textarea>
+                </div>
+                <button type="submit" class="w-full py-3 bg-tronix-primary text-tronix-dark font-extrabold rounded-lg text-lg uppercase transition-all duration-300 hover:bg-white hover:text-tronix-secondary shadow-lg shadow-tronix-primary/40">
+                    Submit Enrollment Request
+                </button>
+                <div id="status-message" class="text-center text-sm font-medium text-red-400 hidden"></div>
+            </form>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-tronix-dark/80 border-t border-tronix-secondary/20 py-8 mt-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <p class="text-xl font-bold text-tronix-primary mb-2">Tronix365</p>
+            <p class="text-sm text-gray-500">&copy; 2025 Tronix365. All rights reserved.</p>
+            <p class="text-xs mt-2 text-gray-600">Specializing in Sensors, Actuators, and Advanced Industrial Projects.</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript for Countdown and Mobile Menu -->
+    <script>
+        // 1. Countdown Timer Logic
+        const targetDate = new Date("December 22, 2025 00:00:00").getTime();
+
+        const countdownFunction = setInterval(function() {
+            const now = new Date().getTime();
+            const distance = targetDate - now;
+
+            // Calculations for days, hours, minutes and seconds
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            // Display the result in the element with the corresponding id
+            document.getElementById("days").innerHTML = days.toString().padStart(2, '0');
+            document.getElementById("hours").innerHTML = hours.toString().padStart(2, '0');
+            document.getElementById("minutes").innerHTML = minutes.toString().padStart(2, '0');
+            document.getElementById("seconds").innerHTML = seconds.toString().padStart(2, '0');
+
+            // If the countdown is finished, write some text 
+            if (distance < 0) {
+                clearInterval(countdownFunction);
+                document.getElementById("countdown").innerHTML = "<span class='text-2xl text-red-500 font-bold'>The Program Has Started!</span>";
+                document.getElementById("days").innerHTML = "00";
+                document.getElementById("hours").innerHTML = "00";
+                document.getElementById("minutes").innerHTML = "00";
+                document.getElementById("seconds").innerHTML = "00";
+            }
+        }, 1000);
+
+        // 2. Mobile Menu Toggle
+        document.getElementById('menu-button').addEventListener('click', function() {
+            const mobileMenu = document.getElementById('mobile-menu');
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // 3. Simple Form Submission Simulation (prevents default submit and shows a message instead of alert)
+        document.querySelector('form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const statusMessage = document.getElementById('status-message');
+            statusMessage.classList.remove('hidden', 'text-red-400');
+            statusMessage.classList.add('text-tronix-primary');
+            statusMessage.innerHTML = 'Thank you for your interest! Your enrollment request has been submitted. We will contact you shortly.';
+            
+            // Clear the form after a short delay
+            setTimeout(() => {
+                e.target.reset();
+            }, 3000);
+        });
+
+    </script>
+</body>
+</html>
