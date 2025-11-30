@@ -9,7 +9,7 @@ const Footer = () => {
                     {/* Brand & Copyright */}
                     <div>
                         <p className="text-2xl font-bold text-tronix-primary mb-4">Tronix365</p>
-                        <p className="text-sm text-gray-400 mb-2">Specializing in Research & Development.</p>
+                        <p className="text-sm text-gray-400 mb-2">Transforming Innovative Ideas Into Reality </p>
                         <div className="mb-4">
                             <span className="inline-block px-3 py-1 rounded-full bg-tronix-primary/10 border border-tronix-primary/20 text-tronix-primary text-xs font-semibold tracking-wide">
                                 Since 2017
@@ -41,7 +41,7 @@ const Footer = () => {
                                 </svg>
                             </a>
                         </div>
-                        <p className="text-sm text-gray-600">&copy; 2025 Tronix365. All rights reserved.</p>
+                        <p className="text-sm text-gray-600 hidden md:block">&copy; 2025 Tronix365. All rights reserved.</p>
                     </div>
 
                     {/* Contact Info */}
@@ -65,9 +65,9 @@ const Footer = () => {
                                 href="https://maps.app.goo.gl/V65P7a6YWds7MqNN6"
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="hover:text-white transition-colors flex flex-col gap-1"
+                                className="hover:text-white transition-colors flex flex-col gap-1 items-center md:items-start mx-auto md:mx-0"
                             >
-                                <span>Tronix365, near Datta Mandir,</span>
+                                <span>Tronix365, Near Datta Mandir,</span>
                                 <span>Sinhgad College Campus, Vadgaon Budruk,</span>
                                 <span>Pune, Maharashtra 411041</span>
                                 <span className="text-tronix-secondary text-xs mt-1 flex items-center">
@@ -78,10 +78,15 @@ const Footer = () => {
                         </p>
                         <div className="border-t border-gray-800 pt-4 mt-4">
                             <p className="text-xs text-gray-500 uppercase tracking-wider">Founder & CEO</p>
-                            <p className="text-tronix-primary font-medium">Shubham Ubale</p>
+                            <p className="text-tronix-primary font-medium">Er. Shubham Ubale</p>
                         </div>
                     </div>
 
+                </div>
+
+                {/* Mobile Copyright */}
+                <div className="mt-8 pt-8 border-t border-gray-800 text-center md:hidden">
+                    <p className="text-sm text-gray-600">&copy; 2025 Tronix365. All rights reserved.</p>
                 </div>
             </div>
         </footer >

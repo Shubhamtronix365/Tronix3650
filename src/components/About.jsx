@@ -8,11 +8,12 @@ const About = () => {
             </h2>
             <div className="grid md:grid-cols-2 gap-12 items-center">
                 <div>
-                    <p className="text-gray-300 text-lg mb-6 leading-relaxed">
-                        Tronix365 specializes in advanced industrial solutions, focusing on Robotics, Embedded Systems, and IoT. Our expertise spans the entire development cycle, from PCB design and development to full-scale R&D. We also provide comprehensive electronic guidance and services, alongside essential development support and training for engineering students.
+                    {/* <p className="text-gray-300 text-lg mb-6 leading-relaxed"> */}
+                    <p className="text-gray-300 text-lg leading-relaxed border-l-4 border-tronix-secondary pl-4 py-2">
+                        Tronix365 specializes in advanced industrial solutions, focusing on Robotics, Embedded Systems and IoT. Our expertise spans the entire development cycle, from PCB design and development to full-scale R&D. We also provide comprehensive electronic guidance and services, alongside essential development support and training .
                     </p>
                     <p className="text-gray-300 text-lg leading-relaxed border-l-4 border-tronix-secondary pl-4 py-2">
-                        Our vision is to empower the future of industry by delivering pioneering Robotics, Embedded, and IoT solutions, while simultaneously fostering a culture of practical innovation through comprehensive R&D and dedicated guidance for emerging engineering talent.
+                        Our vision is to empower the future of industry by delivering pioneering Robotics, Embedded and IoT solutions, while simultaneously fostering a culture of practical innovation through comprehensive R&D and dedicated guidance for emerging engineering talent.
                     </p>
                 </div>
                 <div className="p-6 bg-tronix-dark/50 rounded-xl shadow-2xl shadow-tronix-secondary/20">
@@ -30,7 +31,7 @@ const About = () => {
                         </div>
                         <div className="space-y-2">
                             <div className="flex items-center"><span className="text-tronix-secondary mr-2">&#x27A4;</span> Soldering & Hardware Assembly</div>
-                            <div className="flex items-center"><span className="text-tronix-secondary mr-2">&#x27A4;</span> Product Development Lifecycle</div>
+                            <div className="flex items-center"><span className="text-tronix-secondary mr-2">&#x27A4;</span> Product Development </div>
                             <div className="flex items-center"><span className="text-tronix-secondary mr-2">&#x27A4;</span> Real-Time Data Processing</div>
                             <div className="flex items-center"><span className="text-tronix-secondary mr-2">&#x27A4;</span> Industrial Project Exposure</div>
                             <div className="flex items-center"><span className="text-tronix-secondary mr-2">&#x27A4;</span> Technical Documentation</div>

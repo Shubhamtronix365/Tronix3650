@@ -11,9 +11,9 @@ const Navbar = () => {
         <header className="sticky top-0 z-50 bg-tronix-dark/90 backdrop-blur-sm shadow-lg shadow-tronix-primary/10">
             <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
                 <div className="flex-shrink-0 flex items-center gap-3 cursor-pointer" onClick={scrollToTop}>
-                    <img src="/tronix365_logo.png" alt="Tronix365 Logo" className="h-10 w-auto" />
+                    <img src="/Tronix3650final.jpg" alt="Tronix365 Logo" className="h-12 w-12 rounded-full object-cover border border-tronix-primary/50 shadow-lg shadow-tronix-primary/20" />
                     <span className="font-bold text-2xl tracking-tighter text-white">
-                        Tronix<span className="text-tronix-primary">365</span>
+                        Tronix<span className="text-tronix-secondary">365</span>
                     </span>
                 </div>
                 <div className="hidden md:flex space-x-8 text-lg">

@@ -13,7 +13,7 @@ const Syllabus = () => {
                 <div className="bg-tronix-dark/50 p-6 rounded-xl border border-tronix-secondary/30">
                     <h3 className="text-2xl font-bold mb-4 pb-2 border-b border-tronix-secondary/50 text-tronix-secondary">Core Embedded Systems</h3>
                     <ul className="space-y-2 text-gray-300">
-                        <li className="flex items-start"><span className="text-tronix-primary mr-3 text-xl">&raquo;</span> Microcontrollers: Arduino , PIC Microcontroller, ESP32, 8051, Raspberry Pi , STM32 etc...</li>
+                        <li className="flex items-start"><span className="text-tronix-primary mr-3 text-xl">&raquo;</span> Microcontrollers: Arduino, PIC, ESP32, 8051, Raspberry Pi, STM32 etc...</li>
                         <li className="flex items-start"><span className="text-tronix-primary mr-3 text-xl">&raquo;</span> Protocols: SPI, UART (Serial Comm), I2C etc...</li>
                         <li className="flex items-start"><span className="text-tronix-primary mr-3 text-xl">&raquo;</span> Networking Protocols: HTTP & HTTPS etc...</li>
                         <li className="flex items-start"><span className="text-tronix-primary mr-3 text-xl">&raquo;</span> Real-World Implementation: Hands-on from soldering to final product assembly.</li>
@@ -36,7 +36,7 @@ const Syllabus = () => {
                     <h3 className="text-2xl font-bold mb-4 pb-2 border-b border-tronix-secondary/50 text-tronix-secondary">PCB Design & Robotics</h3>
                     <ul className="space-y-2 text-gray-300">
                         <li className="flex items-start"><span className="text-tronix-primary mr-3 text-xl">&raquo;</span> PCB Design (Proteus): Schematic to Layout design.</li>
-                        <li className="flex items-start"><span className="text-tronix-primary mr-3 text-xl">&raquo;</span> PCB Fabrication: Heat Press, Etching, Tinning, Component Mounting, Masking.</li>
+                        <li className="flex items-start"><span className="text-tronix-primary mr-3 text-xl">&raquo;</span> PCB Fabrication: Printing, Etching, Tinning, Component Mounting, Masking.</li>
                         <li className="flex items-start"><span className="text-tronix-primary mr-3 text-xl">&raquo;</span> Robotics: Concepts and hands-on application of robotic systems.</li>
                         <li className="flex items-start"><span className="text-tronix-primary mr-3 text-xl">&raquo;</span> Innovation: Developing new sensors during the internship.</li>
                     </ul>

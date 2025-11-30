@@ -40,7 +40,7 @@ const Pricing = () => {
                 <a href="#enroll" className="inline-block py-4 px-12 bg-tronix-secondary text-white font-extrabold text-xl rounded-full uppercase tracking-wider transition-all duration-300 shadow-xl hover:shadow-tronix-secondary/50 hover:bg-[#a352ff]">
                     Enroll Now & Pay ₹10,000
                 </a>
-                <p className="text-sm mt-4 text-gray-400">Contact us immediately to secure the ₹6,000 early bird slot!</p>
+                <p className="text-sm mt-4 text-gray-400">Contact us immediately to secure the ₹6,000 Early Bird Slot!</p>
             </div>
         </section>
     );
