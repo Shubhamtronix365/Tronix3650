@@ -9,7 +9,7 @@ logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
 SMTP_HOST = os.getenv("SMTP_HOST", "smtp.gmail.com")
-SMTP_PORT = int(os.getenv("SMTP_PORT", "587"))
+SMTP_PORT = int(os.getenv("SMTP_PORT", "465")) # Default to 465 for SSL
 SMTP_USER = os.getenv("SMTP_USER")
 SMTP_PASSWORD = os.getenv("SMTP_PASSWORD")
 
@@ -60,8 +60,13 @@ def send_confirmation_email(to_email: str, name: str, amount: int, payment_id: s
 
     try:
         # Use a timeout to prevent hanging indefinitely
-        server = smtplib.SMTP(SMTP_HOST, SMTP_PORT, timeout=10)
-        server.starttls()
+        # Use SMTP_SSL for port 465
+        if SMTP_PORT == 465:
+            server = smtplib.SMTP_SSL(SMTP_HOST, SMTP_PORT, timeout=10)
+        else:
+            server = smtplib.SMTP(SMTP_HOST, SMTP_PORT, timeout=10)
+            server.starttls()
+            
         server.login(SMTP_USER, SMTP_PASSWORD)
         server.send_message(msg)
         server.quit()
@@ -93,8 +98,12 @@ def send_admin_coupon_email(new_code: str):
     msg.attach(MIMEText(body, 'html'))
     
     try:
-        server = smtplib.SMTP(SMTP_HOST, SMTP_PORT, timeout=10)
-        server.starttls()
+        if SMTP_PORT == 465:
+            server = smtplib.SMTP_SSL(SMTP_HOST, SMTP_PORT, timeout=10)
+        else:
+            server = smtplib.SMTP(SMTP_HOST, SMTP_PORT, timeout=10)
+            server.starttls()
+            
         server.login(SMTP_USER, SMTP_PASSWORD)
         server.send_message(msg)
         server.quit()
