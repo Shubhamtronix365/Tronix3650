@@ -1,28 +1,44 @@
-import smtplib
-from email.mime.multipart import MIMEMultipart
-from email.mime.text import MIMEText
 import os
+import requests
 import logging
 
 # Configure logging
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
-SMTP_HOST = os.getenv("SMTP_HOST", "smtp.gmail.com")
-SMTP_PORT = int(os.getenv("SMTP_PORT", "465")) # Default to 465 for SSL
-SMTP_USER = os.getenv("SMTP_USER")
-SMTP_PASSWORD = os.getenv("SMTP_PASSWORD")
+BREVO_API_KEY = os.getenv("BREVO_API_KEY")
+BREVO_API_URL = "https://api.brevo.com/v3/smtp/email"
 
-def send_confirmation_email(to_email: str, name: str, amount: int, payment_id: str, registration_date):
-    if not SMTP_USER or not SMTP_PASSWORD:
-        logger.warning("SMTP credentials not set. Skipping email.")
+def send_email_via_brevo(to_email: str, subject: str, html_content: str, sender_name: str = "Tronix365", sender_email: str = "admin@tronix365.in"):
+    if not BREVO_API_KEY:
+        logger.warning("BREVO_API_KEY not set. Skipping email.")
         return
 
-    msg = MIMEMultipart()
-    msg['From'] = SMTP_USER
-    msg['To'] = to_email
-    msg['Subject'] = "Registration Confirmed - Tronix365 40-Day Internship"
+    headers = {
+        "accept": "application/json",
+        "api-key": BREVO_API_KEY,
+        "content-type": "application/json"
+    }
 
+    payload = {
+        "sender": {"name": sender_name, "email": sender_email},
+        "to": [{"email": to_email}],
+        "subject": subject,
+        "htmlContent": html_content
+    }
+
+    try:
+        response = requests.post(BREVO_API_URL, json=payload, headers=headers, timeout=10)
+        response.raise_for_status()
+        logger.info(f"Email sent successfully to {to_email}. Message ID: {response.json().get('messageId')}")
+    except requests.exceptions.RequestException as e:
+        logger.error(f"Failed to send email via Brevo: {e}")
+        if e.response:
+            logger.error(f"Brevo Response: {e.response.text}")
+
+def send_confirmation_email(to_email: str, name: str, amount: int, payment_id: str, registration_date):
+    subject = "Registration Confirmed - Tronix365 40-Day Internship"
+    
     html_body = f"""
     <html>
     <body style="font-family: Arial, sans-serif; background-color: #0a0a0a; color: #ffffff; padding: 20px;">
@@ -55,32 +71,15 @@ def send_confirmation_email(to_email: str, name: str, amount: int, payment_id: s
     </body>
     </html>
     """
-
-    msg.attach(MIMEText(html_body, 'html'))
-
-    try:
-        # Use a timeout to prevent hanging indefinitely
-        # Use SMTP_SSL for port 465
-        if SMTP_PORT == 465:
-            server = smtplib.SMTP_SSL(SMTP_HOST, SMTP_PORT, timeout=10)
-        else:
-            server = smtplib.SMTP(SMTP_HOST, SMTP_PORT, timeout=10)
-            server.starttls()
-            
-        server.login(SMTP_USER, SMTP_PASSWORD)
-        server.send_message(msg)
-        server.quit()
-        logger.info(f"Email sent successfully to {to_email}")
-    except Exception as e:
-        logger.error(f"Failed to send email to {to_email}: {e}")
+    
+    send_email_via_brevo(to_email, subject, html_body)
 
 def send_admin_coupon_email(new_code: str):
-    if not SMTP_USER or not SMTP_PASSWORD:
-        logger.warning("SMTP credentials not set. Skipping admin email.")
-        return
-
+    # Send to admin email (configured in env or hardcoded fallback)
+    admin_email = os.getenv("ADMIN_EMAIL", "admin@tronix365.in")
     subject = "New Coupon Code Generated"
-    body = f"""
+    
+    html_body = f"""
     <html>
         <body>
             <h2>New Coupon Code Generated</h2>
@@ -91,22 +90,4 @@ def send_admin_coupon_email(new_code: str):
     </html>
     """
     
-    msg = MIMEMultipart()
-    msg['From'] = SMTP_USER
-    msg['To'] = SMTP_USER  # Send to self (Admin)
-    msg['Subject'] = subject
-    msg.attach(MIMEText(body, 'html'))
-    
-    try:
-        if SMTP_PORT == 465:
-            server = smtplib.SMTP_SSL(SMTP_HOST, SMTP_PORT, timeout=10)
-        else:
-            server = smtplib.SMTP(SMTP_HOST, SMTP_PORT, timeout=10)
-            server.starttls()
-            
-        server.login(SMTP_USER, SMTP_PASSWORD)
-        server.send_message(msg)
-        server.quit()
-        logger.info(f"Admin coupon email sent to {SMTP_USER}")
-    except Exception as e:
-        logger.error(f"Failed to send admin email: {e}")
+    send_email_via_brevo(admin_email, subject, html_body, sender_name="Tronix365 System")
