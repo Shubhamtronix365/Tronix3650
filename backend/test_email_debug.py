@@ -3,7 +3,7 @@ from email.mime.text import MIMEText
 import os
 from dotenv import load_dotenv
 
-# Load environment variables
+# Load environment variables and imp 
 load_dotenv()
 
 SMTP_HOST = os.getenv("SMTP_HOST", "smtp.gmail.com")
