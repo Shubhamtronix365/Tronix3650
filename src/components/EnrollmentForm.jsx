@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import SoldOutModal from './SoldOutModal';
 
 const EnrollmentForm = ({ onRegisterSuccess }) => {
     const [formData, setFormData] = useState({
@@ -16,6 +17,22 @@ const EnrollmentForm = ({ onRegisterSuccess }) => {
     });
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState('');
+    const [isSoldOut, setIsSoldOut] = useState(false);
+
+    useEffect(() => {
+        const checkSeats = async () => {
+            try {
+                const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:8000';
+                const response = await axios.get(`${apiUrl}/api/seats/available`);
+                if (response.data.available_seats <= 0) {
+                    setIsSoldOut(true);
+                }
+            } catch (err) {
+                console.error("Failed to fetch seat status", err);
+            }
+        };
+        checkSeats();
+    }, []);
 
     const handleChange = (e) => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -201,6 +218,7 @@ const EnrollmentForm = ({ onRegisterSuccess }) => {
                     {loading ? 'Processing...' : 'Submit Enrollment Request'}
                 </button>
             </form>
+            {isSoldOut && <SoldOutModal />}
         </section>
     );
 };
