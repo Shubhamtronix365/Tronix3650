@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 
 const Hero = () => {
     const [timeLeft, setTimeLeft] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 });
-    const [seats, setSeats] = useState({ available_seats: 50, total_seats: 50 });
+    const [seats, setSeats] = useState({ available_seats: 150, total_seats: 150 });
 
     useEffect(() => {
         const targetDate = new Date('2025-12-22T00:00:00');
