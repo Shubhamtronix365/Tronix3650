@@ -38,7 +38,7 @@ def register_user(user: UserCreate, background_tasks: BackgroundTasks, db: Sessi
             db.commit()
     
     # Determine amount based on early bird availability
-    seat = db.query(Seat).first()
+    seat = db.query(Seat).with_for_update().first()
     if not seat:
         # Initialize seats if not present
         seat = Seat()
