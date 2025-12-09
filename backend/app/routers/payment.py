@@ -192,7 +192,7 @@ async def payu_response(
                 if seat.available_seats > 0:
                     seat.booked_seats += 1
                     seat.available_seats -= 1
-                    if float(user.amount) == 6000: # Check amount 
+                    if seat.early_bird_taken < seat.early_bird_seats:
                         seat.early_bird_taken += 1
                 
                 db.commit()
