@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import Footer from '../components/Footer';
 
 // Inline Icons
 const MenuIcon = ({ size = 24, className = "" }) => (
@@ -61,8 +62,8 @@ const Tronix365Home = () => {
             <nav className="bg-[#0a0a0a]/90 backdrop-blur-md border-b border-gray-800 sticky top-0 z-50">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="flex justify-between h-16 items-center">
-                        <div className="flex-shrink-0 flex items-center gap-2 group cursor-pointer">
-                            <div className="w-8 h-8 bg-gradient-to-br from-[#00f7ff] to-blue-600 rounded-lg flex items-center justify-center text-black font-bold text-lg shadow-[0_0_15px_rgba(0,247,255,0.5)] group-hover:shadow-[0_0_25px_rgba(0,247,255,0.8)] transition-shadow duration-300">T</div>
+                        <div className="flex-shrink-0 flex items-center gap-3 cursor-pointer">
+                            <img src="/Tronix3650final.jpg" alt="Tronix365 Logo" className="h-10 w-10 rounded-full object-cover border border-[#00f7ff]/50 shadow-[0_0_15px_rgba(0,247,255,0.3)]" />
                             <span className="font-bold text-xl text-white tracking-tight group-hover:text-[#00f7ff] transition-colors">TRONIX365</span>
                         </div>
 
@@ -254,40 +255,9 @@ const Tronix365Home = () => {
             </section>
 
             {/* Footer */}
-            <footer id="contact" className="bg-black text-gray-300 py-12 border-t border-gray-900">
-                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
-                        <div>
-                            <h3 className="text-white text-lg font-bold mb-4">TRONIX365</h3>
-                            <p className="text-gray-500">
-                                Transforming ideas into reality through innovation in electronics and automation.
-                            </p>
-                        </div>
-                        <div>
-                            <h3 className="text-white text-lg font-bold mb-4">Contact</h3>
-                            <p className="text-gray-500">Pune, Maharashtra, India</p>
-                            <p className="text-gray-500">Email: contact@tronix365.com</p>
-                        </div>
-                        <div>
-                            <h3 className="text-white text-lg font-bold mb-4">Quick Links</h3>
-                            <ul className="space-y-2">
-                                <li><Link to="/" className="text-gray-500 hover:text-[#00f7ff] transition-colors">Home</Link></li>
-                                <li><Link to="/internship" className="text-gray-500 hover:text-[#00f7ff] transition-colors">Internship</Link></li>
-                                <li><a href="#about" className="text-gray-500 hover:text-[#00f7ff] transition-colors">About Us</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div className="border-t border-gray-900 pt-8 flex flex-col md:flex-row justify-between items-center">
-                        <p className="text-sm text-gray-600">© {new Date().getFullYear()} TRONIX365. All rights reserved.</p>
-                        <div className="flex space-x-6 mt-4 md:mt-0">
-                            {/* Social placeholders */}
-                            <a href="#" className="text-gray-600 hover:text-[#00f7ff] transition-colors">LinkedIn</a>
-                            <a href="#" className="text-gray-600 hover:text-[#00f7ff] transition-colors">Twitter</a>
-                            <a href="#" className="text-gray-600 hover:text-[#00f7ff] transition-colors">Facebook</a>
-                        </div>
-                    </div>
-                </div>
-            </footer>
+            <div id="contact">
+                <Footer />
+            </div>
         </div>
     );
 };
