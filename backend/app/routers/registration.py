@@ -110,7 +110,13 @@ def register_user(user: UserCreate, background_tasks: BackgroundTasks, db: Sessi
         
         # Send admin email (Background)
         if new_code:
-            background_tasks.add_task(send_admin_coupon_email, new_code)
+            background_tasks.add_task(
+                send_admin_coupon_email, 
+                new_code=new_code,
+                user_name=new_user.name,
+                user_email=new_user.email,
+                user_phone=new_user.phone
+            )
         
         # Send user email (Background)
         background_tasks.add_task(

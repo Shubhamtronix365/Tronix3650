@@ -77,18 +77,32 @@ def send_confirmation_email(to_email: str, name: str, amount: int, payment_id: s
     
     send_email_via_brevo(to_email, subject, html_body)
 
-def send_admin_coupon_email(new_code: str):
+def send_admin_coupon_email(new_code: str, user_name: str, user_email: str, user_phone: str):
     # Send to admin email (configured in env or hardcoded fallback)
     admin_email = os.getenv("ADMIN_EMAIL", "shubham.tronix365@gmail.com")
-    subject = "New Coupon Code Generated"
+    subject = "New Coupon Registration & New Code Generated"
     
     html_body = f"""
     <html>
-        <body>
-            <h2>New Coupon Code Generated</h2>
-            <p>A coupon was just used. Here is the new code for the next student:</p>
-            <h1 style="color: #00f7ff; background: #111; padding: 10px; display: inline-block;">{new_code}</h1>
-            <p>Share this code with the next student.</p>
+        <body style="font-family: Arial, sans-serif; padding: 20px;">
+            <h2 style="color: #00f7ff;">New Coupon Registration</h2>
+            <p>A user has just registered using a coupon code.</p>
+            
+            <div style="background-color: #f4f4f4; padding: 15px; border-radius: 5px; margin: 20px 0;">
+                <h3 style="margin-top: 0;">User Details:</h3>
+                <ul style="list-style: none; padding: 0;">
+                    <li><strong>Name:</strong> {user_name}</li>
+                    <li><strong>Email:</strong> {user_email}</li>
+                    <li><strong>Phone:</strong> {user_phone}</li>
+                </ul>
+            </div>
+
+            <hr style="border: 0; border-top: 1px solid #ccc; margin: 20px 0;">
+
+            <h3>Next Step:</h3>
+            <p>Here is the <strong>NEW</strong> coupon code for the next student:</p>
+            <h1 style="color: #00f7ff; background: #111; padding: 10px; display: inline-block; border-radius: 5px;">{new_code}</h1>
+            <p>Please share this code with the next student in the chain.</p>
         </body>
     </html>
     """
