@@ -5,7 +5,7 @@ const Hero = () => {
     const [seats, setSeats] = useState({ available_seats: 150, total_seats: 150 });
 
     useEffect(() => {
-        const targetDate = new Date('2026-01-05T00:00:00');
+        const targetDate = new Date('2026-01-10T00:00:00');
 
         const interval = setInterval(() => {
             const now = new Date();
