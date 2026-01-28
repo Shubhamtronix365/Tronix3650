@@ -1,30 +1,8 @@
 import React, { useState, useEffect } from 'react';
+import RobotAssistant from './RobotAssistant';
 
 const Hero = () => {
-    const [timeLeft, setTimeLeft] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 });
     const [seats, setSeats] = useState({ available_seats: 150, total_seats: 150 });
-
-    useEffect(() => {
-        const targetDate = new Date('2026-01-10T00:00:00');
-
-        const interval = setInterval(() => {
-            const now = new Date();
-            const difference = targetDate - now;
-
-            if (difference <= 0) {
-                clearInterval(interval);
-                setTimeLeft({ days: 0, hours: 0, minutes: 0, seconds: 0 });
-            } else {
-                const days = Math.floor(difference / (1000 * 60 * 60 * 24));
-                const hours = Math.floor((difference / (1000 * 60 * 60)) % 24);
-                const minutes = Math.floor((difference / 1000 / 60) % 60);
-                const seconds = Math.floor((difference / 1000) % 60);
-                setTimeLeft({ days, hours, minutes, seconds });
-            }
-        }, 1000);
-
-        return () => clearInterval(interval);
-    }, []);
 
     useEffect(() => {
         // SSE connection for real-time seat updates
@@ -79,17 +57,8 @@ const Hero = () => {
                     Transforming Students into Industry-Ready Engineers. Master the art of hardware and firmware design.
                 </p>
 
-                {/* Countdown Timer */}
-                <div className="flex flex-wrap justify-center gap-4 mb-12 animate-fade-in-up delay-300">
-                    {Object.entries(timeLeft).map(([unit, value]) => (
-                        <div key={unit} className="flex flex-col items-center bg-[#111] border border-tronix-primary/30 rounded-lg p-4 w-24 shadow-lg shadow-tronix-primary/10">
-                            <span className="text-3xl font-mono font-bold text-white">
-                                {String(value).padStart(2, '0')}
-                            </span>
-                            <span className="text-xs text-gray-400 uppercase mt-1">{unit}</span>
-                        </div>
-                    ))}
-                </div>
+                {/* Robot Assistant & Admissions Open */}
+                <RobotAssistant />
 
                 {/* Seat Counter */}
                 <div className="mb-10 animate-fade-in-up delay-400">
