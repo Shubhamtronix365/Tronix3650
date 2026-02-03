@@ -23,7 +23,7 @@ const Highlights = () => {
                 <div className="p-6 rounded-xl bg-tronix-dark border border-tronix-secondary/30 text-center syllabus-card">
                     <div className="text-5xl text-tronix-primary mb-4">🎓</div>
                     <h3 className="text-xl font-bold mb-2">Dedicated Project Support</h3>
-                    <p className="text-gray-400 text-sm">Total support in making and perfecting your final year or semester college project.</p>
+                    <p className="text-gray-400 text-sm">Providing mentorship to assist students in planning, developing, and improving their projects.</p>
                 </div>
                 {/* Highlight Card 4 */}
                 <div className="p-6 rounded-xl bg-tronix-dark border border-tronix-secondary/30 text-center syllabus-card">

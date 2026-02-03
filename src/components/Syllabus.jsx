@@ -4,7 +4,7 @@ const Syllabus = () => {
     return (
         <section id="syllabus" className="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 border-t border-tronix-secondary/20">
             <h2 className="text-5xl font-bold text-center mb-16 text-white tracking-tight">
-                40-Day Internship <span className="text-tronix-primary">Syllabus</span>
+                Internship <span className="text-tronix-primary">Syllabus</span>
             </h2>
 
             <div className="grid lg:grid-cols-3 gap-8">
@@ -43,7 +43,7 @@ const Syllabus = () => {
                 </div>
             </div>
 
-            <p className="text-center mt-12 text-lg font-medium text-gray-400">This intensive program is designed to cover all topics in a hands-on, course-like structure over 40 days.</p>
+            <p className="text-center mt-12 text-lg font-medium text-gray-400">This intensive program is designed to cover all topics in a hands-on, course-like structure.</p>
         </section>
     );
 };

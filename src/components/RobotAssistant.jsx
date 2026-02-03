@@ -10,10 +10,10 @@ const RobotAssistant = () => {
                     <svg viewBox="0 0 100 100" className="w-full h-full drop-shadow-[0_0_15px_rgba(0,255,255,0.5)]">
                         {/* Glow Behind */}
                         <circle cx="50" cy="50" r="40" className="fill-tronix-primary/20 animate-pulse" />
-                        
+
                         {/* Head */}
                         <rect x="25" y="25" width="50" height="45" rx="8" className="fill-slate-900 stroke-tronix-primary stroke-2" />
-                        
+
                         {/* Eyes Container */}
                         <g className="animate-[pulse_4s_infinite]">
                             {/* Left Eye */}
@@ -28,13 +28,13 @@ const RobotAssistant = () => {
 
                         {/* Mouth */}
                         <path d="M 35 60 Q 50 65 65 60" className="stroke-cyan-400 stroke-2 fill-none" />
-                        
+
                         {/* Headphones/Ears */}
                         <rect x="20" y="35" width="5" height="15" rx="2" className="fill-gray-600" />
                         <rect x="75" y="35" width="5" height="15" rx="2" className="fill-gray-600" />
                     </svg>
                 </div>
-                
+
                 {/* Shadow */}
                 <div className="absolute -bottom-2 left-1/2 min-w-[60%] h-2 bg-black/50 blur-sm rounded-full transform -translate-x-1/2 animate-[pulse_3s_infinite_ease-in-out]"></div>
             </div>
@@ -47,9 +47,7 @@ const RobotAssistant = () => {
                         Admissions Open
                     </span>
                 </h3>
-                <p className="mt-2 text-cyan-300 font-bold tracking-wider animate-pulse text-sm md:text-base">
-                    /// SYSTEM ONLINE ///
-                </p>
+
             </div>
         </div>
     );

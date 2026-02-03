@@ -20,7 +20,7 @@ const Pricing = () => {
                 <div className="p-8 rounded-xl bg-tronix-dark border-4 border-tronix-primary text-center shadow-lg shadow-tronix-primary/40 transition-all duration-500 scale-105">
                     <p className="text-lg uppercase font-semibold text-tronix-primary mb-2 animate-pulse">Special Discount</p>
                     <p className="text-5xl font-extrabold text-white mb-4">₹10,000</p>
-                    <p className="text-sm text-gray-300">40-Day Full Program Access</p>
+                    <p className="text-sm text-gray-300">Full Program Access</p>
                     <p className="text-xs mt-4 text-tronix-primary font-bold">(Save ₹6,800 Instantly)</p>
                 </div>
 

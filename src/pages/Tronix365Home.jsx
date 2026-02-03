@@ -126,7 +126,7 @@ const Tronix365Home = () => {
                                             to="/internship"
                                             className="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-bold rounded-md text-black bg-gradient-to-r from-[#00f7ff] to-blue-600 hover:shadow-[0_0_30px_rgba(0,247,255,0.6)] md:py-4 md:text-lg transition-all transform hover:scale-105"
                                         >
-                                            Join 40-Day Internship
+                                            Join Internship
                                         </Link>
                                     </div>
                                     <div className="mt-3 sm:mt-0 sm:ml-3">
@@ -241,7 +241,7 @@ const Tronix365Home = () => {
                         Ready to start your journey?
                     </h2>
                     <p className="mt-4 text-xl text-gray-300 max-w-2xl mx-auto">
-                        Join our 40-Day Embedded & IoT Internship Program and master the skills of tomorrow.
+                        Join our Embedded & IoT Internship Program and master the skills of tomorrow.
                     </p>
                     <div className="mt-8 flex justify-center">
                         <Link
