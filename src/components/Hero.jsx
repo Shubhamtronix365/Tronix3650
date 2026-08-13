@@ -88,29 +88,12 @@ const Hero = () => {
                 </div>
 
                 <div className="relative w-full h-[500px] hidden lg:block animate-float mt-12 lg:mt-0">
-                    {/* Floating Elements around hero image */}
-                    <div className="absolute top-10 -left-10 glass-panel p-3 rounded-lg border-l-2 border-l-primary-fixed z-20 flex items-center gap-3 backdrop-blur-md">
-                        <span className="material-symbols-outlined text-primary-fixed">memory</span>
-                        <div className="flex flex-col">
-                            <span className="font-code-snippet text-[10px] text-outline">STATUS</span>
-                            <span className="font-label-caps text-label-caps text-primary-fixed">SYSTEM ONLINE</span>
-                        </div>
-                    </div>
-
-                    <div className="absolute bottom-20 -right-5 glass-panel p-3 rounded-lg border-r-2 border-r-secondary z-20 flex items-center gap-3 backdrop-blur-md">
-                        <div className="flex flex-col text-right">
-                            <span className="font-code-snippet text-[10px] text-outline">OFFER VALIDITY</span>
-                            <span className="font-label-caps text-label-caps text-secondary font-bold">UNTIL 15 AUG 11:59 PM</span>
-                        </div>
-                        <span className="material-symbols-outlined text-secondary">timer</span>
-                    </div>
-
                     <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent z-10 pointer-events-none rounded-2xl"></div>
 
                     <div
                         className="w-full h-full bg-cover bg-center rounded-2xl border border-outline-variant/30 shadow-[0_0_50px_rgba(0,242,255,0.1)] relative z-0"
                         style={{
-                            backgroundImage: `url('https://lh3.googleusercontent.com/aida-public/AB6AXuC5EJnbmw5qdhdVPwl7Mrg7Ln1noWbRBHm2-wbKeM6s_luPAmH_UP6S38rR8jFmNQYK8x4o-xp2fxt7o9bULHPcxzgJY15XStm6HVlnsivdbmwcMOnTN7jfkamAEjagglMUV5po2mvmeTPQmEpZes6mRAfAkUSUA4sSVErY9sqBFhb6Ov_ODRJGvwPN2TVWI_TOnK3kGDX5-HKK_3jeH6160G_KWCCOs_cg6R-pr7Xo4z0RGZ0AUB7z')`
+                            backgroundImage: `url('/hero-lab.png')`
                         }}
                     >
                         {/* Tech Corner Accents */}
