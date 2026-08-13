@@ -61,7 +61,7 @@ cd tronix365
 ### 2. Backend Setup
 ```bash
 cd backend
-python -m venv venv
+python -m venv myenv
 # Windows
 .\venv\Scripts\activate
 # Linux/Mac
