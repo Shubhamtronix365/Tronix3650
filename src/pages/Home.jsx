@@ -20,7 +20,7 @@ const Home = () => {
     };
 
     return (
-        <div className="bg-tronix-dark text-gray-100 font-sans tech-bg min-h-screen">
+        <div className="font-body-md bg-grid-pattern relative min-h-screen bg-background text-on-surface">
             <Navbar />
             <main>
                 <Hero />

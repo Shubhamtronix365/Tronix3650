@@ -62,7 +62,7 @@ def send_confirmation_email(to_email: str, name: str, amount: int, payment_id: s
             <div style="background-color: #1a1a1a; padding: 15px; border-radius: 5px; margin: 20px 0;">
                 <h2 style="color: #8338ec; margin-top: 0;">Program Details:</h2>
                 <ul style="list-style: none; padding: 0;">
-                    <li><strong>Start Date:</strong> December 22, 2025</li>
+                    <li><strong>Start Date:</strong> December 22, 2026-2027</li>
                     <li><strong>Duration:</strong> 40 Days</li>
                     <li><strong>Mode:</strong> 100% Hands-on</li>
                 </ul>

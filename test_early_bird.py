@@ -1,5 +1,5 @@
 from backend.app.database import SessionLocal
-from backend.app.models.models import Seat, User
+from backend.app.models.models import Seat, User, get_current_price
 from backend.app.routers.registration import register_user
 from backend.app.schemas import UserCreate
 from fastapi import BackgroundTasks
@@ -21,66 +21,37 @@ def test_early_bird():
         db.refresh(seat)
         print(f"Seats reset. Early Bird Taken: {seat.early_bird_taken}/{seat.early_bird_seats}")
 
-        # 2. Register 10 Users (Should be Early Bird)
+        # 2. Register 10 Users (Should be Early Bird: Rs 11,799 = 9999 + 18% GST)
         print("\n--- Registering First 10 Users ---")
         for i in range(1, 11):
-            user_data = UserCreate(
-                name=f"User {i}",
-                email=f"user{i}@test.com",
-                phone="1234567890",
-                college="Test College",
-                branch="CSE",
-                year="3rd",
-                message="Test",
-                coupon_code=None
-            )
-            # Mock background tasks
-            bg_tasks = BackgroundTasks()
-            
-            # We need to simulate the API call logic. 
-            # Since we can't easily call the API function directly due to dependency injection complexity in a script,
-            # we will replicate the core logic or use the function if possible.
-            # Let's try to use the logic directly to be sure.
-            
-            # Re-fetch seat to get fresh state (like API would)
             seat = db.query(Seat).first()
+            price_info = get_current_price(seat.early_bird_taken, seat.early_bird_seats)
+            expected_amount = price_info["total_amount"]
             
-            amount = 10000
-            if seat.early_bird_taken < seat.early_bird_seats:
-                amount = 6000
-            
-            # Simulate Payment Success to increment early_bird_taken
-            # In the real app, this happens in /verify. 
-            # For this test, we assume they pay immediately so we can test the limit.
-            if amount == 6000:
+            if expected_amount == 11799:
                 seat.early_bird_taken += 1
                 db.commit()
             
-            print(f"User {i}: Amount = {amount} (Expected: 6000)")
-            if amount != 6000:
-                print(f"❌ ERROR: User {i} should have got 6000!")
+            print(f"User {i}: Amount = {expected_amount} (Expected: 11799)")
+            if expected_amount != 11799:
+                print(f"❌ ERROR: User {i} should have got 11799!")
 
-        # 3. Register 11th User (Should be Regular Price)
+        # 3. Register 11th User (Should be Standard Tier: Rs 17,699 = 14999 + 18% GST)
         print("\n--- Registering 11th User ---")
         seat = db.query(Seat).first()
-        amount = 10000
-        if seat.early_bird_taken < seat.early_bird_seats:
-            amount = 6000
+        price_info = get_current_price(seat.early_bird_taken, seat.early_bird_seats)
+        amount = price_info["total_amount"]
             
-        print(f"User 11: Amount = {amount} (Expected: 10000)")
+        print(f"User 11: Amount = {amount} (Expected: 17699)")
         
-        if amount == 10000:
-            print("\n✅ SUCCESS: Early Bird logic is working correctly!")
+        if amount == 17699:
+            print("\n✅ SUCCESS: Independence Day Early Bird trigger logic is working 100% correctly!")
         else:
             print("\n❌ FAILURE: User 11 got Early Bird price but shouldn't have.")
 
     except Exception as e:
         print(f"Error: {e}")
     finally:
-        # Cleanup
-        # db.query(User).delete()
-        # db.query(Seat).delete()
-        # db.commit()
         db.close()
 
 if __name__ == "__main__":

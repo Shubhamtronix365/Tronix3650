@@ -11,7 +11,6 @@ const EnrollmentForm = ({ onRegisterSuccess }) => {
         college: '',
         branch: '',
         year: '',
-
         message: '',
         couponCode: ''
     });
@@ -51,19 +50,18 @@ const EnrollmentForm = ({ onRegisterSuccess }) => {
 
         try {
             const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:8000';
-            // Send couponCode in the payload (UserCreate schema needs to match)
             const payload = {
-                ...formData,
+                name: formData.name,
+                email: formData.email,
+                phone: formData.phone,
+                college: formData.college,
+                branch: formData.branch,
+                year: formData.year,
+                message: formData.message,
                 coupon_code: formData.couponCode || null
             };
             const response = await axios.post(`${apiUrl}/api/register`, payload);
-
-            if (response.data.amount === 0) {
-                // Free registration (Coupon) - Show modal for "Pay 0" experience
-                onRegisterSuccess(response.data);
-            } else {
-                onRegisterSuccess(response.data);
-            }
+            onRegisterSuccess(response.data);
         } catch (err) {
             setError(err.response?.data?.detail || 'Registration failed. Please try again.');
         } finally {
@@ -72,152 +70,159 @@ const EnrollmentForm = ({ onRegisterSuccess }) => {
     };
 
     return (
-        <section id="enroll" className="py-20 max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 border-t border-tronix-primary/20 mt-16">
-            <h2 className="text-5xl font-bold text-center mb-12 text-white tracking-tight">
-                Ready to <span className="text-tronix-secondary">Join?</span>
-            </h2>
-            <form onSubmit={handleSubmit} className="space-y-6 bg-[#111] p-8 rounded-xl shadow-2xl shadow-tronix-primary/20 border border-tronix-primary/30">
-                <div>
-                    <label htmlFor="name" className="block text-sm font-medium text-gray-300">Full Name</label>
-                    <input
-                        type="text"
-                        id="name"
-                        name="name"
-                        value={formData.name}
-                        onChange={handleChange}
-                        placeholder="Your Name"
-                        required
-                        className="mt-1 block w-full px-4 py-3 bg-tronix-dark border border-gray-600 rounded-lg text-white focus:ring-tronix-primary focus:border-tronix-primary transition duration-200"
-                    />
-                </div>
-                <div>
-                    <label htmlFor="email" className="block text-sm font-medium text-gray-300">Email Address</label>
-                    <input
-                        type="email"
-                        id="email"
-                        name="email"
-                        value={formData.email}
-                        onChange={handleChange}
-                        placeholder="you@college.com"
-                        required
-                        pattern="^[a-zA-Z0-9._%+\-]+@[a-zA-Z0-9.\-]+\.[a-zA-Z]{2,}$"
-                        className="mt-1 block w-full px-4 py-3 bg-tronix-dark border border-gray-600 rounded-lg text-white focus:ring-tronix-primary focus:border-tronix-primary transition duration-200"
-                    />
-                </div>
-                <div>
-                    <label htmlFor="confirmEmail" className="block text-sm font-medium text-gray-300">Confirm Email Address</label>
-                    <input
-                        type="email"
-                        id="confirmEmail"
-                        name="confirmEmail"
-                        value={formData.confirmEmail}
-                        onChange={handleChange}
-                        placeholder="Re-enter your email"
-                        required
-                        onPaste={(e) => e.preventDefault()} // Prevent pasting to force typing
-                        className="mt-1 block w-full px-4 py-3 bg-tronix-dark border border-gray-600 rounded-lg text-white focus:ring-tronix-primary focus:border-tronix-primary transition duration-200"
-                    />
-                </div>
-                <div>
-                    <label htmlFor="phone" className="block text-sm font-medium text-gray-300">Phone Number</label>
-                    <input
-                        type="tel"
-                        id="phone"
-                        name="phone"
-                        value={formData.phone}
-                        onChange={handleChange}
-                        placeholder="+91 98765 43210"
-                        required
-                        className="mt-1 block w-full px-4 py-3 bg-tronix-dark border border-gray-600 rounded-lg text-white focus:ring-tronix-primary focus:border-tronix-primary transition duration-200"
-                    />
-                </div>
-                <div>
-                    <label htmlFor="college" className="block text-sm font-medium text-gray-300">College Name</label>
-                    <input
-                        type="text"
-                        id="college"
-                        name="college"
-                        value={formData.college}
-                        onChange={handleChange}
-                        placeholder="Your College Name"
-                        required
-                        className="mt-1 block w-full px-4 py-3 bg-tronix-dark border border-gray-600 rounded-lg text-white focus:ring-tronix-primary focus:border-tronix-primary transition duration-200"
-                    />
-                </div>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    <div>
-                        <label htmlFor="branch" className="block text-sm font-medium text-gray-300">Branch</label>
-                        <input
-                            type="text"
-                            id="branch"
-                            name="branch"
-                            value={formData.branch}
-                            onChange={handleChange}
-                            placeholder="e.g. ECE/CSE"
-                            required
-                            className="mt-1 block w-full px-4 py-3 bg-tronix-dark border border-gray-600 rounded-lg text-white focus:ring-tronix-primary focus:border-tronix-primary transition duration-200"
-                        />
-                    </div>
-                    <div>
-                        <label htmlFor="year" className="block text-sm font-medium text-gray-300">Year of Study</label>
-                        <select
-                            id="year"
-                            name="year"
-                            value={formData.year}
-                            onChange={handleChange}
-                            required
-                            className="mt-1 block w-full px-4 py-3 bg-tronix-dark border border-gray-600 rounded-lg text-white focus:ring-tronix-primary focus:border-tronix-primary transition duration-200"
+        <section className="py-section-gap bg-surface-container-low border-t border-outline-variant/10 relative z-10" id="enroll">
+            <div className="w-full max-w-[1280px] mx-auto px-margin-desktop md:px-margin-desktop px-margin-mobile flex justify-center">
+                <div className="glass-panel p-8 rounded-xl border border-outline-variant/50 w-full max-w-2xl">
+                    <form onSubmit={handleSubmit} className="space-y-6">
+                        <div>
+                            <label className="block font-label-caps text-on-surface mb-2 text-sm" htmlFor="fullName">Full Name</label>
+                            <input
+                                className="w-full bg-surface-dim border border-outline-variant rounded-md px-4 py-3 text-on-surface font-body-md tech-input transition-colors focus:ring-primary-fixed focus:border-primary-fixed"
+                                id="fullName"
+                                name="name"
+                                value={formData.name}
+                                onChange={handleChange}
+                                placeholder="Your Name"
+                                required
+                                type="text"
+                            />
+                        </div>
+
+                        <div>
+                            <label className="block font-label-caps text-on-surface mb-2 text-sm" htmlFor="email">Email Address</label>
+                            <input
+                                className="w-full bg-surface-dim border border-outline-variant rounded-md px-4 py-3 text-on-surface font-body-md tech-input transition-colors focus:ring-primary-fixed focus:border-primary-fixed"
+                                id="email"
+                                name="email"
+                                value={formData.email}
+                                onChange={handleChange}
+                                placeholder="you@college.com"
+                                required
+                                type="email"
+                            />
+                        </div>
+
+                        <div>
+                            <label className="block font-label-caps text-on-surface mb-2 text-sm" htmlFor="confirmEmail">Confirm Email Address</label>
+                            <input
+                                className="w-full bg-surface-dim border border-outline-variant rounded-md px-4 py-3 text-on-surface font-body-md tech-input transition-colors focus:ring-primary-fixed focus:border-primary-fixed"
+                                id="confirmEmail"
+                                name="confirmEmail"
+                                value={formData.confirmEmail}
+                                onChange={handleChange}
+                                placeholder="Re-enter your email"
+                                required
+                                onPaste={(e) => e.preventDefault()}
+                                type="email"
+                            />
+                        </div>
+
+                        <div>
+                            <label className="block font-label-caps text-on-surface mb-2 text-sm" htmlFor="phone">Phone Number</label>
+                            <input
+                                className="w-full bg-surface-dim border border-outline-variant rounded-md px-4 py-3 text-on-surface font-body-md tech-input transition-colors focus:ring-primary-fixed focus:border-primary-fixed"
+                                id="phone"
+                                name="phone"
+                                value={formData.phone}
+                                onChange={handleChange}
+                                placeholder="+91 98765 43210"
+                                required
+                                type="tel"
+                            />
+                        </div>
+
+                        <div>
+                            <label className="block font-label-caps text-on-surface mb-2 text-sm" htmlFor="collegeName">College Name</label>
+                            <input
+                                className="w-full bg-surface-dim border border-outline-variant rounded-md px-4 py-3 text-on-surface font-body-md tech-input transition-colors focus:ring-primary-fixed focus:border-primary-fixed"
+                                id="collegeName"
+                                name="college"
+                                value={formData.college}
+                                onChange={handleChange}
+                                placeholder="Your College Name"
+                                required
+                                type="text"
+                            />
+                        </div>
+
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <label className="block font-label-caps text-on-surface mb-2 text-sm" htmlFor="branch">Branch</label>
+                                <input
+                                    className="w-full bg-surface-dim border border-outline-variant rounded-md px-4 py-3 text-on-surface font-body-md tech-input transition-colors focus:ring-primary-fixed focus:border-primary-fixed"
+                                    id="branch"
+                                    name="branch"
+                                    value={formData.branch}
+                                    onChange={handleChange}
+                                    placeholder="e.g. ECE/CSE"
+                                    required
+                                    type="text"
+                                />
+                            </div>
+
+                            <div>
+                                <label className="block font-label-caps text-on-surface mb-2 text-sm" htmlFor="yearOfStudy">Year of Study</label>
+                                <select
+                                    className="w-full bg-surface-dim border border-outline-variant rounded-md px-4 py-3 text-on-surface font-body-md tech-input transition-colors focus:ring-primary-fixed focus:border-primary-fixed"
+                                    id="yearOfStudy"
+                                    name="year"
+                                    value={formData.year}
+                                    onChange={handleChange}
+                                    required
+                                >
+                                    <option value="" disabled>Select Year</option>
+                                    <option value="1st Year">1st Year</option>
+                                    <option value="2nd Year">2nd Year</option>
+                                    <option value="3rd Year">3rd Year</option>
+                                    <option value="4th Year">4th Year</option>
+                                    <option value="Graduate">Graduate</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div>
+                            <label className="block font-label-caps text-secondary mb-2 text-sm" htmlFor="query">Your College / Query (Optional)</label>
+                            <textarea
+                                className="w-full bg-surface-dim border border-outline-variant rounded-md px-4 py-3 text-on-surface font-body-md tech-input transition-colors focus:ring-primary-fixed focus:border-primary-fixed"
+                                id="query"
+                                name="message"
+                                value={formData.message}
+                                onChange={handleChange}
+                                placeholder="Tell us about your background or any questions you have."
+                                rows={3}
+                            />
+                        </div>
+
+                        <div>
+                            <label className="block font-label-caps text-secondary mb-2 text-sm" htmlFor="couponCode">Have a Coupon Code?</label>
+                            <input
+                                className="w-full bg-surface-dim border border-secondary/50 rounded-md px-4 py-3 text-on-surface font-body-md tech-input transition-colors focus:ring-secondary focus:border-secondary"
+                                id="couponCode"
+                                name="couponCode"
+                                value={formData.couponCode}
+                                onChange={handleChange}
+                                placeholder="Enter Code (e.g. TRONIX-XY92)"
+                                type="text"
+                            />
+                            <p className="text-xs text-outline mt-1 font-code-snippet">If valid, your registration will be free.</p>
+                        </div>
+
+                        {error && (
+                            <div className="p-3 rounded bg-error/10 border border-error/30 text-error text-sm text-center font-medium">
+                                {error}
+                            </div>
+                        )}
+
+                        <button
+                            className="w-full text-center bg-primary-fixed text-on-primary-fixed font-headline-lg text-[18px] px-8 py-4 rounded-md hover:bg-primary-fixed-dim transition-all shadow-[0_0_20px_rgba(0,242,255,0.4)] hover:shadow-[0_0_30px_rgba(0,242,255,0.6)] uppercase font-bold mt-4 tracking-wide disabled:opacity-50 disabled:cursor-not-allowed"
+                            type="submit"
+                            disabled={loading}
                         >
-                            <option value="">Select Year</option>
-                            <option value="1st Year">1st Year</option>
-                            <option value="2nd Year">2nd Year</option>
-                            <option value="3rd Year">3rd Year</option>
-                            <option value="4th Year">4th Year</option>
-                            <option value="Graduate">Graduate</option>
-                        </select>
-                    </div>
+                            {loading ? 'PROCESSING ENROLLMENT...' : 'SUBMIT ENROLLMENT REQUEST'}
+                        </button>
+                    </form>
                 </div>
-                <div>
-                    <label htmlFor="message" className="block text-sm font-medium text-gray-300">Your College / Query (Optional)</label>
-                    <textarea
-                        id="message"
-                        name="message"
-                        rows="3"
-                        value={formData.message}
-                        onChange={handleChange}
-                        placeholder="Tell us about your background or any questions you have."
-                        className="mt-1 block w-full px-4 py-3 bg-tronix-dark border border-gray-600 rounded-lg text-white focus:ring-tronix-primary focus:border-tronix-primary transition duration-200"
-                    ></textarea>
-                </div>
-
-                <div>
-                    <label htmlFor="couponCode" className="block text-sm font-medium text-tronix-secondary">Have a Coupon Code?</label>
-                    <input
-                        type="text"
-                        id="couponCode"
-                        name="couponCode"
-                        value={formData.couponCode}
-                        onChange={handleChange}
-                        placeholder="Enter Code (e.g. TRONIX-XY92)"
-                        className="mt-1 block w-full px-4 py-3 bg-tronix-dark border border-tronix-secondary/50 rounded-lg text-white focus:ring-tronix-secondary focus:border-tronix-secondary transition duration-200"
-                    />
-                    <p className="text-xs text-gray-500 mt-1">If valid, your registration will be free.</p>
-                </div>
-
-                {error && (
-                    <div className="text-red-400 text-sm text-center font-medium">
-                        {error}
-                    </div>
-                )}
-
-                <button
-                    type="submit"
-                    disabled={loading}
-                    className="w-full py-3 bg-tronix-primary text-tronix-dark font-extrabold rounded-lg text-lg uppercase transition-all duration-300 hover:bg-white hover:text-tronix-secondary shadow-lg shadow-tronix-primary/40 disabled:opacity-50 disabled:cursor-not-allowed"
-                >
-                    {loading ? 'Processing...' : 'Submit Enrollment Request'}
-                </button>
-            </form>
+            </div>
             {isSoldOut && <SoldOutModal />}
         </section>
     );

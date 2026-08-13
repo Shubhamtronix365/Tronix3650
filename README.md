@@ -43,6 +43,9 @@ Built with performance, security, and user experience in mind, the platform feat
 | **Real-Time** | Server-Sent Events (SSE) |
 | **Deployment** | Render / Vercel |
 
+### Installed Packages:
+- agentation → Visual annotation and feedback tool
+
 ---
 
 ## 🚀 Installation & Setup
@@ -144,6 +147,6 @@ python reset_coupons.py
 -   📱 **Phone**: +91 88301 53805
 
 ---
-&copy; 2025 Tronix365. All Rights Reserved.
+&copy; 2026-2027 Tronix365. All Rights Reserved.
 
 **Developed by BHAVESH BURAD**

@@ -5,6 +5,33 @@ from ..database import Base
 def get_ist_time():
     return datetime.utcnow() + timedelta(hours=5, minutes=30)
 
+# Independence Day Special Offer Deadline: 15th August 2026, 11:59:59 PM IST
+OFFER_DEADLINE = datetime(2026, 8, 15, 23, 59, 59)
+
+def get_current_price(early_bird_taken: int, early_bird_seats: int) -> dict:
+    now = get_ist_time()
+    is_time_valid = now <= OFFER_DEADLINE
+    is_seats_valid = early_bird_taken < early_bird_seats
+    
+    if is_time_valid and is_seats_valid:
+        base_price = 9999
+        gst = int(round(9999 * 0.18))  # 1800
+        total_amount = 9999 + gst      # 11799
+        is_early_bird = True
+    else:
+        base_price = 14999
+        gst = int(round(14999 * 0.18)) # 2700
+        total_amount = 14999 + gst     # 17699
+        is_early_bird = False
+        
+    return {
+        "base_price": base_price,
+        "gst": gst,
+        "total_amount": total_amount,
+        "is_early_bird": is_early_bird,
+        "offer_deadline": OFFER_DEADLINE.strftime("%Y-%m-%d %H:%M:%S")
+    }
+
 class User(Base):
     __tablename__ = "users"
     
@@ -20,7 +47,7 @@ class User(Base):
     payment_id = Column(String(100), nullable=True)
     razorpay_order_id = Column(String(100), nullable=True)
     payment_status = Column(String(20), default="pending")  # pending, success, failed
-    amount = Column(Integer, nullable=False)  # 10000 or 6000
+    amount = Column(Integer, nullable=False)  # Total amount including 18% GST (11799 or 17699)
     created_at = Column(DateTime, default=get_ist_time)
     updated_at = Column(DateTime, default=get_ist_time, onupdate=get_ist_time)
 

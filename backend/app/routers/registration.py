@@ -1,20 +1,16 @@
-from fastapi import APIRouter, Depends, HTTPException
+from fastapi import APIRouter, Depends, HTTPException, BackgroundTasks
 from sqlalchemy.orm import Session
 from ..database import get_db
-from ..models.models import User, Seat, Coupon
+from ..models.models import User, Seat, Coupon, get_current_price
 from ..schemas import UserCreate, UserResponse
 from sqlalchemy.exc import SQLAlchemyError
-import logging
-
-router = APIRouter()
-
-from fastapi import APIRouter, Depends, HTTPException, BackgroundTasks
-
 import logging
 
 # Configure logging
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
+
+router = APIRouter()
 
 @router.post("/register", response_model=UserResponse)
 def register_user(user: UserCreate, background_tasks: BackgroundTasks, db: Session = Depends(get_db)):
@@ -37,7 +33,7 @@ def register_user(user: UserCreate, background_tasks: BackgroundTasks, db: Sessi
             db.delete(db_user)
             db.commit()
     
-    # Determine amount based on early bird availability
+    # Fetch seat information
     seat = db.query(Seat).with_for_update().first()
     if not seat:
         # Initialize seats if not present
@@ -46,11 +42,14 @@ def register_user(user: UserCreate, background_tasks: BackgroundTasks, db: Sessi
         db.commit()
         db.refresh(seat)
     
-    amount = 10000
     payment_status = "pending"
     coupon_used = False
     new_code = None
     payment_id_val = None
+    
+    # Calculate price based on current seats, IST date (cutoff Aug 15 11:59 PM), and 18% GST
+    price_info = get_current_price(seat.early_bird_taken, seat.early_bird_seats)
+    amount = price_info["total_amount"]
     
     # Coupon Logic
     if user.coupon_code:
@@ -74,14 +73,10 @@ def register_user(user: UserCreate, background_tasks: BackgroundTasks, db: Sessi
             if seat.available_seats > 0:
                 seat.booked_seats += 1
                 seat.available_seats -= 1
-                # Coupon users count towards Early Bird limit (First 10 people)
                 if seat.early_bird_taken < seat.early_bird_seats:
                     seat.early_bird_taken += 1
         else:
             raise HTTPException(status_code=404, detail="Invalid or expired coupon code")
-    else:
-        if seat.early_bird_taken < seat.early_bird_seats:
-            amount = 6000
     
     new_user = User(
         name=user.name,
@@ -128,5 +123,5 @@ def register_user(user: UserCreate, background_tasks: BackgroundTasks, db: Sessi
             registration_date=new_user.registration_date
         )
     
-    logger.info("Registration successful. Returning response.")
+    logger.info(f"Registration successful. Returning response with amount {amount}.")
     return new_user

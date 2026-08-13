@@ -8,44 +8,56 @@ const Navbar = () => {
     };
 
     return (
-        <header className="sticky top-0 z-50 bg-tronix-dark/90 backdrop-blur-sm shadow-lg shadow-tronix-primary/10">
-            <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
-                <div className="flex-shrink-0 flex items-center gap-3 cursor-pointer" onClick={scrollToTop}>
-                    <img src="/Tronix3650final.jpg" alt="Tronix365 Logo" className="h-12 w-12 rounded-full object-cover border border-tronix-primary/50 shadow-lg shadow-tronix-primary/20" />
-                    <span className="font-bold text-2xl tracking-tighter text-white">
-                        Tronix<span className="text-tronix-secondary">365</span>
-                    </span>
+        <nav className="fixed top-0 w-full z-50 bg-background/70 backdrop-blur-xl border-b border-outline-variant/30 shadow-[0_0_20px_rgba(0,242,255,0.1)] transition-all duration-300">
+            <div className="flex justify-between items-center px-margin-desktop h-20 w-full max-w-[1280px] mx-auto md:px-margin-desktop px-margin-mobile">
+                {/* Brand */}
+                <div className="flex items-center gap-4 cursor-pointer" onClick={scrollToTop}>
+                    <img
+                        className="h-10 w-10 object-contain rounded-full border border-primary-fixed/30"
+                        src="https://lh3.googleusercontent.com/aida/AP1WRLurHHJH0EOEkq47vmtHA_-Z6kTkX-yXJXaLi7gN5VPgPjOinmh-19p8cDKQnoAJOKIxYj2yU9rpF_GPiLsZ5OIjkUkdypowv4ztwhjbtM4L4rlY4913XWw1inRmjIzN1uOkwkfh36B3Zl8fZdP1REC2XcfpL9yuqoW8b-ezFeNmBwtZKdQ3MVLHtxCu1qa19UvAm1AAJzflwfr5Ziw2S8kY4lR-nl-W8NGdIN4Uoc7O80VXYamU_mKbs2g"
+                        alt="Tronix365 Logo"
+                        onError={(e) => { e.target.src = '/Tronix3650final_circular.png'; }}
+                    />
+                    <span className="font-headline-lg text-headline-lg font-bold text-primary-fixed tracking-tighter">TRONIX365</span>
                 </div>
-                <div className="hidden md:flex space-x-8 text-lg">
-                    <a href="/e-commerse/" className="hover:text-tronix-primary transition duration-300">Shop</a>
-                    <a href="#internship" className="hover:text-tronix-primary transition duration-300">Internship</a>
-                    <a href="#syllabus" className="hover:text-tronix-primary transition duration-300">Syllabus</a>
-                    <a href="#about" className="hover:text-tronix-primary transition duration-300">About Us</a>
-                    <a href="#pricing" className="hover:text-tronix-primary transition duration-300">Pricing</a>
-                    <a href="#enroll" className="hover:text-tronix-primary transition duration-300">Enroll</a>
+
+                {/* Links (Desktop) */}
+                <div className="hidden md:flex gap-8 items-center">
+                    <a className="text-on-surface-variant font-label-caps text-label-caps hover:text-primary-fixed transition-colors duration-300 uppercase" href="#about">About Us</a>
+                    <a className="text-on-surface-variant font-label-caps text-label-caps hover:text-primary-fixed transition-colors duration-300 uppercase" href="#syllabus">Syllabus</a>
+                    <a className="text-on-surface-variant font-label-caps text-label-caps hover:text-primary-fixed transition-colors duration-300 uppercase" href="#pricing">Pricing</a>
+                    <a className="font-label-caps text-label-caps text-primary-fixed border-b-2 border-primary-fixed pb-1 uppercase" href="#enroll">Enroll</a>
                 </div>
-                <button
-                    id="menu-button"
-                    className="md:hidden text-tronix-primary focus:outline-none"
-                    onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                >
-                    <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16m-7 6h7"></path>
-                    </svg>
-                </button>
-            </nav>
+
+                {/* Trailing Actions */}
+                <div className="flex items-center gap-4">
+                    <a
+                        className="hidden md:flex items-center justify-center bg-primary-container text-on-primary font-label-caps text-label-caps px-6 py-2 rounded-DEFAULT hover:bg-primary-fixed-dim transition-colors uppercase font-bold"
+                        href="#enroll"
+                    >
+                        ENROLL_NOW
+                    </a>
+                    <button
+                        className="md:hidden text-primary-fixed focus:outline-none p-2"
+                        onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+                    >
+                        <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16m-7 6h7" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+
             {/* Mobile Menu */}
             {isMobileMenuOpen && (
-                <div id="mobile-menu" className="md:hidden bg-tronix-dark p-4 border-t border-tronix-primary/20">
-                    <a href="/e-commerse/" className="block py-2 text-center hover:text-tronix-primary transition duration-300" onClick={() => setIsMobileMenuOpen(false)}>Shop</a>
-                    <a href="#internship" className="block py-2 text-center hover:text-tronix-primary transition duration-300" onClick={() => setIsMobileMenuOpen(false)}>Internship</a>
-                    <a href="#syllabus" className="block py-2 text-center hover:text-tronix-primary transition duration-300" onClick={() => setIsMobileMenuOpen(false)}>Syllabus</a>
-                    <a href="#about" className="block py-2 text-center hover:text-tronix-primary transition duration-300" onClick={() => setIsMobileMenuOpen(false)}>About Us</a>
-                    <a href="#pricing" className="block py-2 text-center hover:text-tronix-primary transition duration-300" onClick={() => setIsMobileMenuOpen(false)}>Pricing</a>
-                    <a href="#enroll" className="block py-2 text-center hover:text-tronix-primary transition duration-300" onClick={() => setIsMobileMenuOpen(false)}>Enroll</a>
+                <div className="md:hidden bg-background/95 border-b border-outline-variant/30 px-6 py-4 flex flex-col gap-4">
+                    <a className="text-on-surface-variant font-label-caps text-label-caps hover:text-primary-fixed py-2 uppercase" href="#about" onClick={() => setIsMobileMenuOpen(false)}>About Us</a>
+                    <a className="text-on-surface-variant font-label-caps text-label-caps hover:text-primary-fixed py-2 uppercase" href="#syllabus" onClick={() => setIsMobileMenuOpen(false)}>Syllabus</a>
+                    <a className="text-on-surface-variant font-label-caps text-label-caps hover:text-primary-fixed py-2 uppercase" href="#pricing" onClick={() => setIsMobileMenuOpen(false)}>Pricing</a>
+                    <a className="text-primary-fixed font-label-caps text-label-caps py-2 uppercase font-bold" href="#enroll" onClick={() => setIsMobileMenuOpen(false)}>Enroll Now</a>
                 </div>
             )}
-        </header>
+        </nav>
     );
 };
 
