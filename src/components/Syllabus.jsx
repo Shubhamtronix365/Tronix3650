@@ -3,7 +3,7 @@ import React from 'react';
 const Syllabus = () => {
     return (
         <section className="py-section-gap bg-surface-container-lowest border-y border-outline-variant/10 relative" id="syllabus">
-            <div className="w-full max-w-[1280px] mx-auto px-margin-desktop md:px-margin-desktop px-margin-mobile relative z-10">
+            <div className="w-full max-w-[1280px] mx-auto px-margin-mobile md:px-margin-desktop relative z-10">
                 <div className="text-center mb-16">
                     <h2 className="font-headline-lg text-headline-lg text-on-surface mb-4 uppercase">
                         <span className="tech-gradient-text">Internship Syllabus</span>

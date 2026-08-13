@@ -3,7 +3,7 @@ import React from 'react';
 const Highlights = () => {
     return (
         <section className="py-section-gap relative bg-surface-container-low/50" id="highlights">
-            <div className="w-full max-w-[1280px] mx-auto px-margin-desktop md:px-margin-desktop px-margin-mobile relative z-10">
+            <div className="w-full max-w-[1280px] mx-auto px-margin-mobile md:px-margin-desktop relative z-10">
                 <div className="text-center mb-16">
                     <h2 className="font-headline-lg text-headline-lg text-on-surface mb-6 uppercase tracking-widest">
                         Program <span className="text-secondary">Highlights</span>

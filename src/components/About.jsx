@@ -4,7 +4,7 @@ const About = () => {
     return (
         <section className="py-section-gap relative overflow-hidden" id="about">
             <div className="absolute inset-0 pointer-events-none z-0 flex justify-center items-center opacity-10"></div>
-            <div className="w-full max-w-[1280px] mx-auto px-margin-desktop md:px-margin-desktop px-margin-mobile relative z-10">
+            <div className="w-full max-w-[1280px] mx-auto px-margin-mobile md:px-margin-desktop relative z-10">
                 <div className="text-center mb-16">
                     <h2 className="font-headline-lg text-headline-lg text-on-surface mb-6 uppercase tracking-widest">
                         About <span className="text-primary-fixed">Tronix365</span>

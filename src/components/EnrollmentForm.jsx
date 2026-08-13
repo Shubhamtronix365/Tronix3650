@@ -71,7 +71,7 @@ const EnrollmentForm = ({ onRegisterSuccess }) => {
 
     return (
         <section className="py-section-gap bg-surface-container-low border-t border-outline-variant/10 relative z-10" id="enroll">
-            <div className="w-full max-w-[1280px] mx-auto px-margin-desktop md:px-margin-desktop px-margin-mobile flex justify-center">
+            <div className="w-full max-w-[1280px] mx-auto px-margin-mobile md:px-margin-desktop flex justify-center">
                 <div className="glass-panel p-8 rounded-xl border border-outline-variant/50 w-full max-w-2xl">
                     <form onSubmit={handleSubmit} className="space-y-6">
                         <div>

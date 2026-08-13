@@ -3,7 +3,7 @@ import React from 'react';
 const Pricing = () => {
     return (
         <section className="py-section-gap relative" id="pricing">
-            <div className="w-full max-w-[1280px] mx-auto px-margin-desktop md:px-margin-desktop px-margin-mobile flex flex-col items-center relative z-10">
+            <div className="w-full max-w-[1280px] mx-auto px-margin-mobile md:px-margin-desktop flex flex-col items-center relative z-10">
                 <div className="text-center mb-12 md:mb-16 flex flex-col items-center justify-center">
                     <h2 className="font-headline-xl text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-wider uppercase">
                         <span className="tech-gradient-text">Investment &amp; Enrollment</span>
@@ -31,7 +31,7 @@ const Pricing = () => {
                     </div>
 
                     {/* Right Card: Independence Day Super Early Bird Offer (Featured) */}
-                    <div className="glass-panel border-[#FF9933]/70 p-10 rounded-2xl text-center relative flex flex-col justify-center h-full shadow-[0_0_35px_rgba(255,153,51,0.25)] scale-105 z-10 border-2">
+                    <div className="glass-panel border-[#FF9933]/70 p-10 rounded-2xl text-center relative flex flex-col justify-center h-full shadow-[0_0_35px_rgba(255,153,51,0.25)] lg:scale-105 z-10 border-2">
                         <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-surface-container-highest border border-[#FF9933]/60 px-4 py-1.5 rounded-full text-[11px] font-black tracking-wider shadow-lg whitespace-nowrap">
                             <span className="bg-gradient-to-r from-[#FF9933] via-[#FFFFFF] to-[#138808] bg-clip-text text-transparent">
                                 🇮🇳 INDEPENDENCE DAY OFFER — FIRST 10 SEATS ONLY!

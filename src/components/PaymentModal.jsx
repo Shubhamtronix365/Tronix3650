@@ -98,8 +98,8 @@ const PaymentModal = ({ user, onClose }) => {
     };
 
     return (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/85 backdrop-blur-md px-4">
-            <div className="glass-panel border-2 border-primary-fixed/40 p-8 rounded-xl max-w-md w-full shadow-[0_0_40px_rgba(0,242,255,0.25)] relative text-on-surface">
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/85 backdrop-blur-md px-4 py-6 overflow-y-auto">
+            <div className="glass-panel border-2 border-primary-fixed/40 p-6 sm:p-8 rounded-xl max-w-md w-full my-auto shadow-[0_0_40px_rgba(0,242,255,0.25)] relative text-on-surface">
                 <button
                     onClick={onClose}
                     className="absolute top-4 right-4 text-on-surface-variant hover:text-white text-xl font-bold transition-colors p-1"

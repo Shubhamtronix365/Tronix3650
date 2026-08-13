@@ -33,7 +33,7 @@ const Hero = () => {
             <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary-container/20 rounded-full blur-[120px] pointer-events-none"></div>
             <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-secondary-container/20 rounded-full blur-[120px] pointer-events-none"></div>
 
-            <div className="w-full max-w-[1280px] mx-auto px-margin-desktop md:px-margin-desktop px-margin-mobile grid grid-cols-1 lg:grid-cols-2 gap-gutter items-center relative z-10">
+            <div className="w-full max-w-[1280px] mx-auto px-margin-mobile md:px-margin-desktop grid grid-cols-1 lg:grid-cols-2 gap-gutter items-center relative z-10">
                 <div className="flex flex-col items-start gap-8">
                     {/* High-Impact Branded Tiranga Independence Day Banner */}
                     <div className="w-full sm:w-auto inline-flex flex-col sm:flex-row items-center gap-3 bg-surface-container-high/95 border-2 border-[#FF9933]/60 px-6 py-3.5 rounded-2xl shadow-[0_0_30px_rgba(255,153,51,0.3)] backdrop-blur-xl">
@@ -57,7 +57,7 @@ const Hero = () => {
                         </div>
                     </div>
 
-                    <h1 className="font-headline-xl text-headline-xl md:text-[64px] leading-tight text-on-surface">
+                    <h1 className="font-headline-xl text-4xl sm:text-5xl md:text-6xl lg:text-[64px] leading-tight text-on-surface">
                         Embedded &amp; <br />
                         <span className="tech-gradient-text">IoT Internship</span>
                     </h1>

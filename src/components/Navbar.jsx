@@ -9,7 +9,7 @@ const Navbar = () => {
 
     return (
         <nav className="fixed top-0 w-full z-50 bg-background/70 backdrop-blur-xl border-b border-outline-variant/30 shadow-[0_0_20px_rgba(0,242,255,0.1)] transition-all duration-300">
-            <div className="flex justify-between items-center px-margin-desktop h-20 w-full max-w-[1280px] mx-auto md:px-margin-desktop px-margin-mobile">
+            <div className="flex justify-between items-center px-margin-mobile md:px-margin-desktop h-20 w-full max-w-[1280px] mx-auto">
                 {/* Brand */}
                 <div className="flex items-center gap-4 cursor-pointer" onClick={scrollToTop}>
                     <img
