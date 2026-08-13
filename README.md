@@ -14,6 +14,7 @@ Built with performance, security, and user experience in mind, the platform feat
 ### 🎨 Frontend (Client-Side)
 -   **Modern UI/UX**: Built with **React + Vite** and styled with **Tailwind CSS** for a premium, dark-themed aesthetic.
 -   **Responsive Design**: Fully optimized for all devices (Mobile, Tablet, Desktop).
+-   **E-Commerce Shop Integration**: Quick redirect button linking to official Tronix365 store (https://www.tronix365.in/e-commerse/).
 -   **Real-Time Seat Counter**: Uses Server-Sent Events (SSE) to show live seat availability.
 -   **Dynamic Pricing**:
     -   **Super Early Bird**: First 10 registrations @ ₹6,000.

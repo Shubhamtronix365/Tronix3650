@@ -19,6 +19,10 @@ const ArrowRightIcon = ({ size = 24, className = "" }) => (
     <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
 );
 
+const ShoppingCartIcon = ({ size = 24, className = "" }) => (
+    <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
+);
+
 const CpuIcon = ({ className = "" }) => (
     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}><rect x="4" y="4" width="16" height="16" rx="2" ry="2"></rect><rect x="9" y="9" width="6" height="6"></rect><line x1="9" y1="1" x2="9" y2="4"></line><line x1="15" y1="1" x2="15" y2="4"></line><line x1="9" y1="20" x2="9" y2="23"></line><line x1="15" y1="20" x2="15" y2="23"></line><line x1="20" y1="9" x2="23" y2="9"></line><line x1="20" y1="14" x2="23" y2="14"></line><line x1="1" y1="9" x2="4" y2="9"></line><line x1="1" y1="14" x2="4" y2="14"></line></svg>
 );
@@ -68,10 +72,18 @@ const Tronix365Home = () => {
                         </div>
 
                         {/* Desktop Menu */}
-                        <div className="hidden md:flex space-x-8 items-center">
+                        <div className="hidden md:flex space-x-6 items-center">
                             <a href="#services" className="text-gray-300 hover:text-[#00f7ff] transition-colors font-medium hover:shadow-[0_0_10px_rgba(0,247,255,0.3)]">Expertise</a>
                             <a href="#about" className="text-gray-300 hover:text-[#00f7ff] transition-colors font-medium hover:shadow-[0_0_10px_rgba(0,247,255,0.3)]">About</a>
                             <a href="#contact" className="text-gray-300 hover:text-[#00f7ff] transition-colors font-medium hover:shadow-[0_0_10px_rgba(0,247,255,0.3)]">Contact</a>
+                            <a
+                                href="https://www.tronix365.in/e-commerse/"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="border border-[#00f7ff]/50 text-[#00f7ff] hover:bg-[#00f7ff] hover:text-black px-4 py-1.5 rounded-full font-bold transition-all shadow-[0_0_10px_rgba(0,247,255,0.2)] hover:shadow-[0_0_20px_rgba(0,247,255,0.5)] flex items-center gap-1.5 text-sm"
+                            >
+                                <ShoppingCartIcon size={16} /> Shop
+                            </a>
                             <Link
                                 to="/internship"
                                 className="bg-gradient-to-r from-blue-600 to-[#00f7ff] text-black px-5 py-2 rounded-full font-bold hover:shadow-[0_0_20px_rgba(0,247,255,0.5)] transition-all transform hover:-translate-y-0.5 flex items-center gap-2"
@@ -96,6 +108,14 @@ const Tronix365Home = () => {
                             <a href="#services" className="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-[#00f7ff] hover:bg-gray-800">Expertise</a>
                             <a href="#about" className="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-[#00f7ff] hover:bg-gray-800">About</a>
                             <a href="#contact" className="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-[#00f7ff] hover:bg-gray-800">Contact</a>
+                            <a
+                                href="https://www.tronix365.in/e-commerse/"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="flex items-center gap-2 px-3 py-2 rounded-md text-base font-medium text-[#00f7ff] hover:bg-gray-800"
+                            >
+                                <ShoppingCartIcon size={18} /> Shop E-Commerce
+                            </a>
                             <Link
                                 to="/internship"
                                 className="block w-full text-center mt-4 px-5 py-3 rounded-lg bg-gradient-to-r from-blue-600 to-[#00f7ff] text-black font-bold hover:shadow-[0_0_15px_rgba(0,247,255,0.4)]"
@@ -131,8 +151,18 @@ const Tronix365Home = () => {
                                     </div>
                                     <div className="mt-3 sm:mt-0 sm:ml-3">
                                         <a
+                                            href="https://www.tronix365.in/e-commerse/"
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            className="w-full flex items-center justify-center px-8 py-3 border border-[#00f7ff]/50 text-base font-bold rounded-md text-[#00f7ff] bg-transparent hover:bg-[#00f7ff]/10 hover:shadow-[0_0_20px_rgba(0,247,255,0.3)] md:py-4 md:text-lg transition-all transform hover:scale-105 gap-2"
+                                        >
+                                            <ShoppingCartIcon size={20} /> Visit Shop
+                                        </a>
+                                    </div>
+                                    <div className="mt-3 sm:mt-0 sm:ml-3">
+                                        <a
                                             href="#contact"
-                                            className="w-full flex items-center justify-center px-8 py-3 border border-[#00f7ff]/30 text-base font-medium rounded-md text-[#00f7ff] bg-transparent hover:bg-[#00f7ff]/10 md:py-4 md:text-lg transition-all"
+                                            className="w-full flex items-center justify-center px-8 py-3 border border-gray-700 text-base font-medium rounded-md text-gray-300 bg-transparent hover:bg-gray-800 md:py-4 md:text-lg transition-all"
                                         >
                                             Contact Us
                                         </a>
