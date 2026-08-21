@@ -1,153 +1,183 @@
-# Tronix365 - Advanced Embedded & IoT Internship Platform
+# Tronix365 - 45-Day Embedded & IoT Internship Platform
 
-## 🚀 Overview
-**Tronix365** is a state-of-the-art event registration and management platform designed for the "40-Day Embedded & IoT Internship Program". This full-stack application provides a seamless experience for students to enroll, pay, and secure their seats in real-time.
+A full-stack, production-ready event registration and seat management platform for the **45-Day Embedded & IoT Internship Program** by **Tronix365 Engineering Labs**.
 
-Built with performance, security, and user experience in mind, the platform features a dynamic pricing engine, real-time seat tracking, and secure payment integration.
-
-**Founder & CEO:** Shubham Ubale
+This platform provides real-time seat availability tracking, dynamic tier pricing (Early Bird vs Standard), auto-chaining coupon validation, and payment gateway integration with PayU & Razorpay.
 
 ---
 
-## ✨ Key Features
+## 🌟 Key Features
 
 ### 🎨 Frontend (Client-Side)
--   **Modern UI/UX**: Built with **React + Vite** and styled with **Tailwind CSS** for a premium, dark-themed aesthetic.
--   **Responsive Design**: Fully optimized for all devices (Mobile, Tablet, Desktop).
--   **E-Commerce Shop Integration**: Quick redirect button linking to official Tronix365 store (https://www.tronix365.in/e-commerse/).
--   **Real-Time Seat Counter**: Uses Server-Sent Events (SSE) to show live seat availability.
--   **Dynamic Pricing**:
-    -   **Super Early Bird**: First 10 registrations @ ₹6,000.
-    -   **Standard**: Remaining seats @ ₹10,000.
--   **Integrated Payment Gateway**: Seamless checkout experience using **Razorpay**.
+- **Modern UI & Typography**: Styled with Google Font **Plus Jakarta Sans**, title-case navigation links, compact footer, and clean responsive design.
+- **Real-Time Seat Tracking**: Server-Sent Events (SSE) stream live seat counts directly to the user's screen.
+- **Dynamic 10-Seat Early Bird Pricing**:
+  - **Super Early Bird**: First 10 registered students get **₹9,999** base fee.
+  - **Standard Pass**: Registrations 11 to 150 get **₹14,999** base fee.
+  - **Transparent Checkout**: 18% GST line item (+₹1,800 / +₹2,700) displayed clearly during billing before payment.
+- **Integrated Payment Checkout**: Instant registration and payment processing via PayU & Razorpay.
 
 ### ⚙️ Backend (Server-Side)
--   **High-Performance API**: Powered by **FastAPI** (Python) for lightning-fast response times.
--   **Database**: **PostgreSQL** for robust data management (Users, Seats, Payments).
--   **Security**:
-    -   Payment Signature Verification (Anti-Tamper).
-    -   CORS & Trusted Host Protection.
-    -   SQL Injection Protection via SQLAlchemy.
--   **Automated Emails**: Sends instant confirmation emails with payment receipts upon successful enrollment.
--   **Coupon System**: "Chain Reaction" coupon logic where using a code generates a new one for the next student.
+- **FastAPI Framework**: Modular, high-speed Python APIs for registration, pricing, and seat management.
+- **Database Sequence Reset & Auto-Increment**: Clean database reset tools that restart registration serial numbers back to `1`.
+- **Chain-Reaction Coupon System**: Validating a 100% free/cash coupon code automatically generates a brand-new code in the database for the next user.
+- **Automated Emails**: Instant email receipts sent upon successful enrollment.
 
 ---
 
-## 🛠️ Tech Stack
+## 📁 Project Structure
 
-| Component | Technology |
+```text
+Tronix3650/
+|-- src/                      (All frontend React source code)
+|   |-- components/           (Navbar, Hero, Highlights, Pricing, EnrollmentForm, PaymentModal, Footer)
+|   |-- pages/                (Home, Success, Failure)
+|   |-- index.css             (Tailwind & custom CSS styles)
+|   |-- main.jsx              (React entry point)
+|
+|-- backend/                  (All backend Python FastAPI source code)
+|   |-- app/
+|   |   |-- models/           (SQLAlchemy database models: User, Seat, Coupon)
+|   |   |-- routers/          (API endpoints: registration, payment, seats)
+|   |   |-- services/         (Email & auxiliary services)
+|   |   |-- database.py       (Database engine & Session configuration)
+|   |   |-- main.py           (FastAPI app initialization)
+|   |   |-- schemas.py        (Pydantic validation schemas)
+|   |-- myenv/                (Python virtual environment)
+|   |-- requirements.txt      (Backend Python dependencies)
+|
+|-- public/                   (Static assets, SVG logos, hero image)
+|-- index.html                (HTML document & Google Fonts imports)
+|-- package.json              (Frontend NPM dependencies)
+|-- reset_seats.py            (Database reset script: clears DB & restarts serial at 1)
+|-- generate_first_coupon.py  (Coupon generation script)
+|-- test_early_bird.py        (Backend pricing test suite)
+|-- tailwind.config.js        (Tailwind CSS theme configuration)
+|-- vite.config.js            (Vite build configuration)
+|-- .env                      (Environment variables)
+|-- README.md                 (Project documentation)
+```
+
+---
+
+## 🛠️ Tech Stack & Installed Packages
+
+| Layer | Technology Used |
 | :--- | :--- |
-| **Frontend** | React.js, Vite, Tailwind CSS, Axios, Framer Motion |
-| **Backend** | FastAPI, Python, Uvicorn |
-| **Database** | PostgreSQL, SQLAlchemy |
-| **Payments** | Razorpay API |
+| **Frontend** | React 18, Vite, Tailwind CSS, Axios, React Router DOM, Plus Jakarta Sans |
+| **Backend** | Python 3.14, FastAPI, Uvicorn, SQLAlchemy, Pydantic |
+| **Database** | PostgreSQL (Production) / SQLite (Local Development) |
+| **Payments** | PayU / Razorpay |
 | **Real-Time** | Server-Sent Events (SSE) |
-| **Deployment** | Render / Vercel |
 
-### Installed Packages:
-- agentation → Visual annotation and feedback tool
+### 📦 Installed Frontend Packages (NPM)
+- `axios` → API requests to FastAPI backend
+- `react-router-dom` → Page routing (`/`, `/success`, `/failure`)
+- `lucide-react` / `material-symbols` → Icons & UI elements
+
+### 📦 Installed Backend Packages (Python)
+- `fastapi` → Web API framework
+- `uvicorn` → ASGI web server
+- `sqlalchemy` → Database ORM
+- `psycopg2-binary` → PostgreSQL database adapter
+- `email-validator` → Email syntax and deliverability checks
 
 ---
 
-## 🚀 Installation & Setup
+## 🚀 Easy Setup & Run Instructions
 
-### Prerequisites
--   Node.js & npm
--   Python 3.8+
--   PostgreSQL
-
-### 1. Clone the Repository
+### Step 1: Clone the Repository
 ```bash
-git clone https://github.com/bhaveshburad729/tronix365.git
-cd tronix365
+git clone https://github.com/bhaveshburad729/Tronix3650.git
+cd Tronix3650
 ```
 
-### 2. Backend Setup
-```bash
-cd backend
-python -m venv myenv
-# Windows
-.\venv\Scripts\activate
-# Linux/Mac
-source venv/bin/activate
+### Step 2: Backend Setup (Python Virtual Environment)
+1. Navigate to the backend directory and create/activate `myenv`:
+   ```bash
+   cd backend
+   python -m venv myenv
+   ```
+2. Activate virtual environment:
+   - **Windows (PowerShell)**:
+     ```powershell
+     .\myenv\Scripts\activate
+     ```
+   - **Linux/Mac**:
+     ```bash
+     source myenv/bin/activate
+     ```
+3. Install backend packages:
+   ```bash
+   pip install -r requirements.txt
+   ```
+4. Start the backend API server:
+   ```bash
+   uvicorn app.main:app --reload --port 8000
+   ```
 
-pip install -r requirements.txt
-```
-**Configure Environment Variables:**
-Create a `.env` file in the `backend` folder:
-```env
-DATABASE_URL=postgresql://user:password@localhost/Databasename
-RAZORPAY_KEY_ID=your_key_id
-RAZORPAY_KEY_SECRET=your_key_secret
-BREVO_API_KEY=your_brevo_api_key
-SENDER_EMAIL=your_sender_email
-```
-**Run Server:**
-```bash
-uvicorn app.main:app --reload
-```
+### Step 3: Frontend Setup (React + Vite)
+1. Open a new terminal at project root (`Tronix3650`):
+   ```bash
+   npm install
+   ```
+2. Start the frontend development server:
+   ```bash
+   npm run dev
+   ```
+3. Open your browser at `http://localhost:5173`.
 
-### 3. Frontend Setup
-```bash
-cd ..
-npm install
-```
-**Configure Environment:**
+---
+
+## 🔑 Environment Variables (`.env`)
+
 Create a `.env` file in the root folder:
 ```env
+# Frontend API URL
 VITE_API_URL=http://localhost:8000
+
+# Database URL (Optional - defaults to SQLite for local development)
+DATABASE_URL=postgresql://postgres:password@localhost:5432/tronix365
+
+# Payment Gateway Keys
+PAYU_KEY=your_payu_key
+PAYU_SALT=your_payu_salt
+PAYU_ENV=TEST
 ```
-**Run Client:**
+
+---
+
+## 🛠️ Admin Commands & Scripts
+
+### 1. Reset Database & Restart Serial ID from 1
+Deletes all old registrations, clears seats, and restarts auto-increment IDs at `1`:
 ```bash
-npm run dev
+python reset_seats.py
 ```
 
-### 4. Admin Tools (Backend)
-The system includes powerful scripts to manage the event:
-
-**A. Seat Management:**
-Update the total seat count and reset the booked counter.
+### 2. Generate 1st Active Coupon Code
+Generates a valid unused 100% free/cash coupon code:
 ```bash
-python update_seats.py
+python generate_first_coupon.py
 ```
 
-**B. Coupon System (Chain Reaction):**
-Reset all coupons and generate the first code.
+### 3. Run Early Bird Pricing Test Suite
+Verifies that the first 10 registered users receive ₹9,999 (+ GST) and the 11th user receives ₹14,999 (+ GST):
 ```bash
-python reset_coupons.py
+python test_early_bird.py
 ```
-*   **How it works**:
-    1.  Run the script to get the first code.
-    2.  Give it to a student.
-    3.  When used, the system **automatically generates a new code** and emails it to the admin.
-    4.  Repeat the cycle.
 
 ---
 
-## 🔒 Security Measures
--   **Environment Variables**: Sensitive keys are never hardcoded.
--   **Atomic Transactions**: Prevents race conditions during seat booking.
--   **Input Validation**: Pydantic schemas ensure data integrity.
--   **Secure Payments**: Razorpay signature verification.
+## 📞 Contact & Support
+
+**Tronix365 Engineering Labs**  
+- **Founder & CEO**: Mangesh Sanjay Adsule  
+- 📍 **Address**: Tronix365, Near Datta Mandir, Sinhgad College Campus, Vadgaon Budruk, Pune, Maharashtra 411041  
+- 📧 **Email**: admin@tronix365.in  
+- 📱 **Phone**: +91 88301 53805  
 
 ---
 
-## 🚀 Deployment
--   **Frontend**: Deploy to Vercel/Netlify.
--   **Backend**: Deploy to Render/Railway/AWS.
--   **Database**: Use a managed PostgreSQL instance (e.g., Supabase, Neon).
-
----
-
-## 📞 Contact
-**Shubham Ubale**
-*Founder & CEO, Tronix365*
-
--   📍 **Address**: Tronix365, Near Datta Mandir, Sinhgad College Campus, Vadgaon Budruk, Pune, Maharashtra 411041
--   📧 **Email**: admin@tronix365.in
--   📱 **Phone**: +91 88301 53805
-
----
-&copy; 2026-2027 Tronix365. All Rights Reserved.
-
+&copy; 2026 Tronix365 Engineering Labs. All Rights Reserved.  
 **Developed by BHAVESH BURAD**
