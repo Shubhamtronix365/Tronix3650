@@ -35,12 +35,12 @@ const Hero = () => {
 
             <div className="w-full max-w-[1280px] mx-auto px-margin-mobile md:px-margin-desktop grid grid-cols-1 lg:grid-cols-2 gap-gutter items-center relative z-10">
                 <div className="flex flex-col items-start gap-8">
-                    {/* High-Impact Branded Tiranga Independence Day Banner */}
-                    <div className="w-full sm:w-auto inline-flex flex-col sm:flex-row items-center gap-3 bg-surface-container-high/95 border-2 border-[#FF9933]/60 px-6 py-3.5 rounded-2xl shadow-[0_0_30px_rgba(255,153,51,0.3)] backdrop-blur-xl">
+                    {/* High-Impact Early Bird Offer Banner */}
+                    <div className="w-full sm:w-auto inline-flex flex-col sm:flex-row items-center gap-3 bg-surface-container-high/95 border-2 border-primary-fixed/60 px-6 py-3.5 rounded-2xl shadow-[0_0_30px_rgba(0,242,255,0.3)] backdrop-blur-xl">
                         <div className="flex items-center gap-2">
-                            <span className="w-3 h-3 rounded-full bg-[#FF9933] animate-pulse"></span>
+                            <span className="w-3 h-3 rounded-full bg-primary-fixed animate-pulse"></span>
                             <span className="font-headline-lg text-xs md:text-sm font-black tracking-widest uppercase text-white">
-                                🇮🇳 INDEPENDENCE DAY OFFER
+                                ⚡ EARLY BIRD OFFER
                             </span>
                         </div>
                         <div className="hidden sm:block text-outline-variant">|</div>
@@ -48,11 +48,11 @@ const Hero = () => {
                             <span className="font-code-snippet text-xs md:text-sm font-bold text-on-surface-variant">
                                 FIRST 10 SEATS AT
                             </span>
-                            <span className="font-headline-xl text-2xl md:text-3xl font-black bg-gradient-to-r from-[#FF9933] via-[#FFFFFF] to-[#138808] bg-clip-text text-transparent drop-shadow-[0_0_10px_rgba(255,255,255,0.4)]">
+                            <span className="font-headline-xl text-2xl md:text-3xl font-black bg-gradient-to-r from-primary-fixed via-white to-secondary-container bg-clip-text text-transparent drop-shadow-[0_0_10px_rgba(0,242,255,0.4)]">
                                 ₹9,999
                             </span>
                             <span className="font-code-snippet text-[10px] md:text-xs text-outline uppercase font-semibold">
-                                (UNTIL 15 AUG 11:59 PM)
+                                (LIMITED OFFER)
                             </span>
                         </div>
                     </div>
