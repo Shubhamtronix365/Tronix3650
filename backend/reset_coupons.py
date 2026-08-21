@@ -29,7 +29,12 @@ def reset_coupons():
     # Send email
     try:
         from app.services.email import send_admin_coupon_email
-        send_admin_coupon_email(code)
+        send_admin_coupon_email(
+            new_code=code,
+            user_name="System Admin (Coupon Reset)",
+            user_email="shubham.tronix365@gmail.com",
+            user_phone="N/A"
+        )
     except Exception as e:
         print(f"Could not send email: {e}")
 

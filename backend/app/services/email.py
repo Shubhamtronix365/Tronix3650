@@ -109,7 +109,7 @@ def send_confirmation_email(to_email: str, name: str, amount: int, payment_id: s
     
     send_email_via_brevo(to_email, subject, html_body)
 
-def send_admin_coupon_email(new_code: str, user_name: str, user_email: str, user_phone: str):
+def send_admin_coupon_email(new_code: str, user_name: str = "System Admin (Initial Setup)", user_email: str = "shubham.tronix365@gmail.com", user_phone: str = "N/A"):
     # Send to admin email (configured in env or hardcoded fallback)
     admin_email = os.getenv("ADMIN_EMAIL", "shubham.tronix365@gmail.com")
     subject = "New Coupon Registration & New Code Generated"
