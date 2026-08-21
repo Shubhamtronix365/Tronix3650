@@ -79,14 +79,15 @@ export default {
       fontFamily: {
         sora: ['Sora', 'sans-serif'],
         inter: ['Inter', 'sans-serif'],
+        jakarta: ['Plus Jakarta Sans', 'sans-serif'],
         mono: ['JetBrains Mono', 'monospace'],
         'headline-xl': ['Sora', 'sans-serif'],
-        'body-lg': ['Inter', 'sans-serif'],
+        'body-lg': ['Plus Jakarta Sans', 'Inter', 'sans-serif'],
         'code-snippet': ['JetBrains Mono', 'monospace'],
         'headline-lg': ['Sora', 'sans-serif'],
         'headline-lg-mobile': ['Sora', 'sans-serif'],
-        'label-caps': ['JetBrains Mono', 'monospace'],
-        'body-md': ['Inter', 'sans-serif']
+        'label-caps': ['Plus Jakarta Sans', 'Inter', 'sans-serif'],
+        'body-md': ['Plus Jakarta Sans', 'Inter', 'sans-serif']
       },
       fontSize: {
         'headline-xl': ['48px', { lineHeight: '1.2', letterSpacing: '-0.02em', fontWeight: '700' }],
