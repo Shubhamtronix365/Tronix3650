@@ -5,15 +5,13 @@ from ..database import Base
 def get_ist_time():
     return datetime.utcnow() + timedelta(hours=5, minutes=30)
 
-# Independence Day Special Offer Deadline: 15th August 2026, 11:59:59 PM IST
-OFFER_DEADLINE = datetime(2026, 8, 15, 23, 59, 59)
+# Early Bird Special Offer: First 10 Seats get Rs 9999 + 18% GST (Rs 11799 total)
+# Remaining Seats (11-150) get Rs 14999 + 18% GST (Rs 17699 total)
 
-def get_current_price(early_bird_taken: int, early_bird_seats: int) -> dict:
-    now = get_ist_time()
-    is_time_valid = now <= OFFER_DEADLINE
+def get_current_price(early_bird_taken: int, early_bird_seats: int = 10) -> dict:
     is_seats_valid = early_bird_taken < early_bird_seats
     
-    if is_time_valid and is_seats_valid:
+    if is_seats_valid:
         base_price = 9999
         gst = int(round(9999 * 0.18))  # 1800
         total_amount = 9999 + gst      # 11799
@@ -28,8 +26,7 @@ def get_current_price(early_bird_taken: int, early_bird_seats: int) -> dict:
         "base_price": base_price,
         "gst": gst,
         "total_amount": total_amount,
-        "is_early_bird": is_early_bird,
-        "offer_deadline": OFFER_DEADLINE.strftime("%Y-%m-%d %H:%M:%S")
+        "is_early_bird": is_early_bird
     }
 
 class User(Base):
@@ -55,7 +52,7 @@ class Seat(Base):
     __tablename__ = "seats"
     
     id = Column(Integer, primary_key=True, index=True)
-    event_name = Column(String(200), default="40-Day Embedded & IoT Internship")
+    event_name = Column(String(200), default="45-Day Embedded & IoT Internship")
     total_seats = Column(Integer, default=150)
     booked_seats = Column(Integer, default=0)
     available_seats = Column(Integer, default=150)
