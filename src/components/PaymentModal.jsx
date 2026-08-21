@@ -134,8 +134,8 @@ const PaymentModal = ({ user, onClose }) => {
                                         Real-Time Pricing Breakdown
                                     </p>
                                     {isEarlyBird ? (
-                                        <span className="bg-[#FF9933]/20 border border-[#FF9933]/50 text-[#FF9933] px-2 py-0.5 rounded text-[10px] font-bold">
-                                            🇮🇳 Independence Offer
+                                        <span className="bg-primary-fixed/20 border border-primary-fixed/50 text-primary-fixed px-2 py-0.5 rounded text-[10px] font-bold">
+                                            ⚡ Early Bird Pass
                                         </span>
                                     ) : (
                                         <span className="bg-primary-fixed/10 border border-primary-fixed/30 text-primary-fixed px-2 py-0.5 rounded text-[10px] font-bold">
