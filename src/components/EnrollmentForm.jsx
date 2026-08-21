@@ -75,9 +75,9 @@ const EnrollmentForm = ({ onRegisterSuccess }) => {
                 <div className="glass-panel p-8 rounded-xl border border-outline-variant/50 w-full max-w-2xl">
                     <form onSubmit={handleSubmit} className="space-y-6">
                         <div>
-                            <label className="block font-label-caps text-on-surface mb-2 text-sm" htmlFor="fullName">Full Name</label>
+                            <label className="block font-jakarta font-medium text-on-surface mb-2 text-sm" htmlFor="fullName">Full Name</label>
                             <input
-                                className="w-full bg-surface-dim border border-outline-variant rounded-md px-4 py-3 text-on-surface font-body-md tech-input transition-colors focus:ring-primary-fixed focus:border-primary-fixed"
+                                className="w-full bg-surface-dim border border-outline-variant rounded-md px-4 py-3 text-on-surface font-jakarta font-medium tech-input transition-colors focus:ring-primary-fixed focus:border-primary-fixed"
                                 id="fullName"
                                 name="name"
                                 value={formData.name}
@@ -89,23 +89,23 @@ const EnrollmentForm = ({ onRegisterSuccess }) => {
                         </div>
 
                         <div>
-                            <label className="block font-label-caps text-on-surface mb-2 text-sm" htmlFor="email">Email Address</label>
+                            <label className="block font-jakarta font-medium text-on-surface mb-2 text-sm" htmlFor="email">Email Address</label>
                             <input
-                                className="w-full bg-surface-dim border border-outline-variant rounded-md px-4 py-3 text-on-surface font-body-md tech-input transition-colors focus:ring-primary-fixed focus:border-primary-fixed"
+                                className="w-full bg-surface-dim border border-outline-variant rounded-md px-4 py-3 text-on-surface font-jakarta font-medium tech-input transition-colors focus:ring-primary-fixed focus:border-primary-fixed"
                                 id="email"
                                 name="email"
                                 value={formData.email}
                                 onChange={handleChange}
-                                placeholder="you@college.com"
+                                placeholder="Enter your email address"
                                 required
                                 type="email"
                             />
                         </div>
 
                         <div>
-                            <label className="block font-label-caps text-on-surface mb-2 text-sm" htmlFor="confirmEmail">Confirm Email Address</label>
+                            <label className="block font-jakarta font-medium text-on-surface mb-2 text-sm" htmlFor="confirmEmail">Confirm Email Address</label>
                             <input
-                                className="w-full bg-surface-dim border border-outline-variant rounded-md px-4 py-3 text-on-surface font-body-md tech-input transition-colors focus:ring-primary-fixed focus:border-primary-fixed"
+                                className="w-full bg-surface-dim border border-outline-variant rounded-md px-4 py-3 text-on-surface font-jakarta font-medium tech-input transition-colors focus:ring-primary-fixed focus:border-primary-fixed"
                                 id="confirmEmail"
                                 name="confirmEmail"
                                 value={formData.confirmEmail}
@@ -118,23 +118,23 @@ const EnrollmentForm = ({ onRegisterSuccess }) => {
                         </div>
 
                         <div>
-                            <label className="block font-label-caps text-on-surface mb-2 text-sm" htmlFor="phone">Phone Number</label>
+                            <label className="block font-jakarta font-medium text-on-surface mb-2 text-sm" htmlFor="phone">Phone Number</label>
                             <input
-                                className="w-full bg-surface-dim border border-outline-variant rounded-md px-4 py-3 text-on-surface font-body-md tech-input transition-colors focus:ring-primary-fixed focus:border-primary-fixed"
+                                className="w-full bg-surface-dim border border-outline-variant rounded-md px-4 py-3 text-on-surface font-jakarta font-medium tech-input transition-colors focus:ring-primary-fixed focus:border-primary-fixed"
                                 id="phone"
                                 name="phone"
                                 value={formData.phone}
                                 onChange={handleChange}
-                                placeholder="+91 98765 43210"
+                                placeholder="Enter your mobile number"
                                 required
                                 type="tel"
                             />
                         </div>
 
                         <div>
-                            <label className="block font-label-caps text-on-surface mb-2 text-sm" htmlFor="collegeName">College Name</label>
+                            <label className="block font-jakarta font-medium text-on-surface mb-2 text-sm" htmlFor="collegeName">College Name</label>
                             <input
-                                className="w-full bg-surface-dim border border-outline-variant rounded-md px-4 py-3 text-on-surface font-body-md tech-input transition-colors focus:ring-primary-fixed focus:border-primary-fixed"
+                                className="w-full bg-surface-dim border border-outline-variant rounded-md px-4 py-3 text-on-surface font-jakarta font-medium tech-input transition-colors focus:ring-primary-fixed focus:border-primary-fixed"
                                 id="collegeName"
                                 name="college"
                                 value={formData.college}
@@ -147,9 +147,9 @@ const EnrollmentForm = ({ onRegisterSuccess }) => {
 
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                             <div>
-                                <label className="block font-label-caps text-on-surface mb-2 text-sm" htmlFor="branch">Branch</label>
+                                <label className="block font-jakarta font-medium text-on-surface mb-2 text-sm" htmlFor="branch">Branch</label>
                                 <input
-                                    className="w-full bg-surface-dim border border-outline-variant rounded-md px-4 py-3 text-on-surface font-body-md tech-input transition-colors focus:ring-primary-fixed focus:border-primary-fixed"
+                                    className="w-full bg-surface-dim border border-outline-variant rounded-md px-4 py-3 text-on-surface font-jakarta font-medium tech-input transition-colors focus:ring-primary-fixed focus:border-primary-fixed"
                                     id="branch"
                                     name="branch"
                                     value={formData.branch}
@@ -161,9 +161,9 @@ const EnrollmentForm = ({ onRegisterSuccess }) => {
                             </div>
 
                             <div>
-                                <label className="block font-label-caps text-on-surface mb-2 text-sm" htmlFor="yearOfStudy">Year of Study</label>
+                                <label className="block font-jakarta font-medium text-on-surface mb-2 text-sm" htmlFor="yearOfStudy">Year of Study</label>
                                 <select
-                                    className="w-full bg-surface-dim border border-outline-variant rounded-md px-4 py-3 text-on-surface font-body-md tech-input transition-colors focus:ring-primary-fixed focus:border-primary-fixed"
+                                    className="w-full bg-surface-dim border border-outline-variant rounded-md px-4 py-3 text-on-surface font-jakarta font-medium tech-input transition-colors focus:ring-primary-fixed focus:border-primary-fixed"
                                     id="yearOfStudy"
                                     name="year"
                                     value={formData.year}
@@ -181,9 +181,9 @@ const EnrollmentForm = ({ onRegisterSuccess }) => {
                         </div>
 
                         <div>
-                            <label className="block font-label-caps text-secondary mb-2 text-sm" htmlFor="query">Your College / Query (Optional)</label>
+                            <label className="block font-jakarta font-medium text-secondary mb-2 text-sm" htmlFor="query">Your College / Query (Optional)</label>
                             <textarea
-                                className="w-full bg-surface-dim border border-outline-variant rounded-md px-4 py-3 text-on-surface font-body-md tech-input transition-colors focus:ring-primary-fixed focus:border-primary-fixed"
+                                className="w-full bg-surface-dim border border-outline-variant rounded-md px-4 py-3 text-on-surface font-jakarta font-medium tech-input transition-colors focus:ring-primary-fixed focus:border-primary-fixed"
                                 id="query"
                                 name="message"
                                 value={formData.message}
@@ -194,9 +194,9 @@ const EnrollmentForm = ({ onRegisterSuccess }) => {
                         </div>
 
                         <div>
-                            <label className="block font-label-caps text-secondary mb-2 text-sm" htmlFor="couponCode">Have a Coupon Code?</label>
+                            <label className="block font-jakarta font-medium text-secondary mb-2 text-sm" htmlFor="couponCode">Have a Coupon Code?</label>
                             <input
-                                className="w-full bg-surface-dim border border-secondary/50 rounded-md px-4 py-3 text-on-surface font-body-md tech-input transition-colors focus:ring-secondary focus:border-secondary"
+                                className="w-full bg-surface-dim border border-secondary/50 rounded-md px-4 py-3 text-on-surface font-jakarta font-medium tech-input transition-colors focus:ring-secondary focus:border-secondary"
                                 id="couponCode"
                                 name="couponCode"
                                 value={formData.couponCode}
@@ -204,21 +204,20 @@ const EnrollmentForm = ({ onRegisterSuccess }) => {
                                 placeholder="Enter Code (e.g. TRONIX-XY92)"
                                 type="text"
                             />
-                            <p className="text-xs text-outline mt-1 font-code-snippet">If valid, your registration will be free.</p>
                         </div>
 
                         {error && (
-                            <div className="p-3 rounded bg-error/10 border border-error/30 text-error text-sm text-center font-medium">
+                            <div className="p-3 rounded bg-error/10 border border-error/30 text-error text-sm text-center font-medium font-jakarta">
                                 {error}
                             </div>
                         )}
 
                         <button
-                            className="w-full text-center bg-primary-fixed text-on-primary-fixed font-headline-lg text-[18px] px-8 py-4 rounded-md hover:bg-primary-fixed-dim transition-all shadow-[0_0_20px_rgba(0,242,255,0.4)] hover:shadow-[0_0_30px_rgba(0,242,255,0.6)] uppercase font-bold mt-4 tracking-wide disabled:opacity-50 disabled:cursor-not-allowed"
+                            className="w-full text-center bg-primary-fixed text-on-primary-fixed font-jakarta text-[17px] font-bold px-8 py-4 rounded-md hover:bg-primary-fixed-dim transition-all shadow-[0_0_20px_rgba(0,242,255,0.4)] hover:shadow-[0_0_30px_rgba(0,242,255,0.6)] mt-4 tracking-wide disabled:opacity-50 disabled:cursor-not-allowed"
                             type="submit"
                             disabled={loading}
                         >
-                            {loading ? 'PROCESSING ENROLLMENT...' : 'SUBMIT ENROLLMENT REQUEST'}
+                            {loading ? 'Processing Enrollment...' : 'Submit Enrollment Request'}
                         </button>
                     </form>
                 </div>
