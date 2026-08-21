@@ -72,7 +72,7 @@ def send_email_via_brevo(to_email: str, subject: str, html_content: str, sender_
             logger.error(f"Brevo Response: {e.response.text}")
 
 def send_confirmation_email(to_email: str, name: str, amount: int, payment_id: str, registration_date):
-    subject = "Registration Confirmed - Tronix365 40-Day Internship"
+    subject = "Registration Confirmed - Tronix365 45-Day Internship"
     
     html_body = f"""
     <html>
@@ -80,7 +80,7 @@ def send_confirmation_email(to_email: str, name: str, amount: int, payment_id: s
         <div style="max-width: 600px; margin: 0 auto; border: 1px solid #00f7ff; border-radius: 10px; padding: 20px;">
             <h1 style="color: #00f7ff; text-align: center;">Welcome to Tronix365!</h1>
             <p>Dear {name},</p>
-            <p>Your registration for the <strong>40-Day Embedded & IoT Internship</strong> has been confirmed.</p>
+            <p>Your registration for the <strong>45-Day Embedded & IoT Internship</strong> has been confirmed.</p>
             
             <div style="background-color: #1a1a1a; padding: 15px; border-radius: 5px; margin: 20px 0;">
                 <h2 style="color: #8338ec; margin-top: 0;">Payment Details:</h2>
@@ -94,8 +94,8 @@ def send_confirmation_email(to_email: str, name: str, amount: int, payment_id: s
             <div style="background-color: #1a1a1a; padding: 15px; border-radius: 5px; margin: 20px 0;">
                 <h2 style="color: #8338ec; margin-top: 0;">Program Details:</h2>
                 <ul style="list-style: none; padding: 0;">
-                    <li><strong>Start Date:</strong> December 22, 2026-2027</li>
-                    <li><strong>Duration:</strong> 40 Days</li>
+                    <li><strong>Program:</strong> 45-Day Embedded & IoT Internship</li>
+                    <li><strong>Duration:</strong> 45 Days</li>
                     <li><strong>Mode:</strong> 100% Hands-on</li>
                 </ul>
             </div>
