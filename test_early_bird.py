@@ -45,7 +45,7 @@ def test_early_bird():
         print(f"User 11: Amount = {amount} (Expected: 17699)")
         
         if amount == 17699:
-            print("\n✅ SUCCESS: Independence Day Early Bird trigger logic is working 100% correctly!")
+            print("\n✅ SUCCESS: Seat-based Early Bird trigger logic (First 10 @ 9999+GST, 11th @ 14999+GST) is working 100% correctly!")
         else:
             print("\n❌ FAILURE: User 11 got Early Bird price but shouldn't have.")
 

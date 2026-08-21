@@ -13,13 +13,45 @@ SENDER_EMAIL = os.getenv("SENDER_EMAIL", "shubham.tronix365@gmail.com")
 def send_email_via_brevo(to_email: str, subject: str, html_content: str, sender_name: str = "Tronix365", sender_email: str = None):
     if not sender_email:
         sender_email = SENDER_EMAIL
-    if not BREVO_API_KEY:
+    
+    brevo_key = os.getenv("BREVO_API_KEY", "")
+    if not brevo_key:
         logger.warning("BREVO_API_KEY not set. Skipping email.")
         return
 
+    # If the key starts with 'xsmtpsib-', it is Brevo SMTP Relay key
+    if brevo_key.startswith("xsmtpsib-"):
+        try:
+            import smtplib
+            from email.mime.text import MIMEText
+            from email.mime.multipart import MIMEMultipart
+
+            smtp_host = os.getenv("SMTP_HOST", "smtp-relay.brevo.com")
+            if "gmail" in smtp_host.lower():
+                smtp_host = "smtp-relay.brevo.com"
+            smtp_port = int(os.getenv("SMTP_PORT", 587))
+            
+            msg = MIMEMultipart()
+            msg['From'] = f"{sender_name} <{sender_email}>"
+            msg['To'] = to_email
+            msg['Subject'] = subject
+            msg.attach(MIMEText(html_content, 'html'))
+
+            server = smtplib.SMTP(smtp_host, smtp_port, timeout=15)
+            server.starttls()
+            server.login(sender_email, brevo_key)
+            server.sendmail(sender_email, to_email, msg.as_string())
+            server.quit()
+            logger.info(f"Email sent successfully via Brevo SMTP Relay to {to_email}.")
+            return
+        except Exception as e:
+            logger.error(f"Failed to send email via Brevo SMTP Relay: {e}")
+            return
+
+    # Otherwise send via Brevo REST API (xkeysib-)
     headers = {
         "accept": "application/json",
-        "api-key": BREVO_API_KEY,
+        "api-key": brevo_key,
         "content-type": "application/json"
     }
 
@@ -35,7 +67,7 @@ def send_email_via_brevo(to_email: str, subject: str, html_content: str, sender_
         response.raise_for_status()
         logger.info(f"Email sent successfully to {to_email}. Message ID: {response.json().get('messageId')}")
     except requests.exceptions.RequestException as e:
-        logger.error(f"Failed to send email via Brevo: {e}")
+        logger.error(f"Failed to send email via Brevo API: {e}")
         if e.response:
             logger.error(f"Brevo Response: {e.response.text}")
 
